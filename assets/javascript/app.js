@@ -3,6 +3,7 @@
 //search through the options in the API and results options
 
 var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json";
+var productType = // linked to product type field
 
 $.ajax({
     url: queryURL,
