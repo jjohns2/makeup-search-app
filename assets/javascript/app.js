@@ -1,6 +1,7 @@
 //take the inputs from the menus from front end
 
 //search through the options in the API and results options
+// console.log($);
 
 var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json";
 
