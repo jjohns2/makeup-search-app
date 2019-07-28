@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/stylesheet.css">
-    
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -21,29 +21,179 @@
 
 <body>
     <div class="container-fluid">
-        <h1>Find the right make up for your skin type</h1>
+        <h1 id="topic">Find the right make up for your skin type</h1>
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Select the product type
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Product Type
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">cream</a>
-                <a class="dropdown-item" href="#">Powder</a>
-             
+            <div class="dropdown-menu" class="productType" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Blush</a>
+                <a class="dropdown-item" href="#">Bronzer</a>
+                <a class="dropdown-item" href="#">Eyeliner</a>
+                <a class="dropdown-item" href="#">Eyeshadow</a>
+                <a class="dropdown-item" href="#">Foundation</a>
+                <a class="dropdown-item" href="#">Lip Liner</a>
+                <a class="dropdown-item" href="#">Lipstick</a>
+                <a class="dropdown-item" href="#">Mascara</a>
+                <a class="dropdown-item" href="#">Nail Polish</a>
             </div>
-        </div>
+
+
+        </div><br>
+
+
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Product Category
+            </button>
+            <div class="dropdown-menu" class="selectProductCategory" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Cream</a>
+                <a class="dropdown-item" href="#">Powder</a>
+                <a class="dropdown-item" href="#">Pencil</a>
+                <a class="dropdown-item" href="#">Liquid</a>
+                <a class="dropdown-item" href="#">Gel</a>
+                <a class="dropdown-item" href="#">Contour</a>
+                <a class="dropdown-item" href="#">Mineral</a>
+                <a class="dropdown-item" href="#">Highlighter</a>
+                <a class="dropdown-item" href="#">Bb cc</a>
+                <a class="dropdown-item" href="#">Lip Stain</a>
+
+            </div>
+
+
+        </div><br>
+
+
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Brand
+            </button>
+            <div class="dropdown-menu" class="selectBrand" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">almay</a>
+                <a class="dropdown-item" href="#">alva</a>
+                <a class="dropdown-item" href="#">anna sui</a>
+                <a class="dropdown-item" href="#">annabelle</a>
+                <a class="dropdown-item" href="#">benefit</a>
+                <a class="dropdown-item" href="#">boosh</a>
+                <a class="dropdown-item" href="#">burt's bees</a>
+                <a class="dropdown-item" href="#">butter london</a>
+                <a class="dropdown-item" href="#">c'est moi</a>
+                <a class="dropdown-item" href="#">cargo cosmetics</a>
+                <a class="dropdown-item" href="#">china glaze</a>
+                <a class="dropdown-item" href="#">clinique</a>
+                <a class="dropdown-item" href="#">coastal</a>
+                <a class="dropdown-item" href="#">classic creation</a>
+                <a class="dropdown-item" href="#">colourpop</a>
+                <a class="dropdown-item" href="#">covergirl</a>
+                <a class="dropdown-item" href="#">dalish</a>
+                <a class="dropdown-item" href="#">deciem</a>
+                <a class="dropdown-item" href="#">dior</a>
+                <a class="dropdown-item" href="#">dr. hauschka</a>
+                <a class="dropdown-item" href="#">e.l.f.</a>
+                <a class="dropdown-item" href="#">essie</a>
+                <a class="dropdown-item" href="#">fenty</a>
+                <a class="dropdown-item" href="#">glossie</a>
+                <a class="dropdown-item" href="#">green people</a>
+                <a class="dropdown-item" href="#">iman</a>
+                <a class="dropdown-item" href="#">l'oreal</a>
+                <a class="dropdown-item" href="#">lotus</a>
+                <a class="dropdown-item" href="#">cosmetics usa</a>
+                <a class="dropdown-item" href="#">maia's mineral</a>
+                <a class="dropdown-item" href="#">galaxy</a>
+                <a class="dropdown-item" href="#">marcelle</a>
+                <a class="dropdown-item" href="#">marienatie</a>
+                <a class="dropdown-item" href="#">maybelline</a>
+                <a class="dropdown-item" href="#">milani</a>
+                <a class="dropdown-item" href="#">mineral fusion</a>
+                <a class="dropdown-item" href="#">misa</a>
+                <a class="dropdown-item" href="#">mistura</a>
+                <a class="dropdown-item" href="#">moov</a>
+                <a class="dropdown-item" href="#">nudus</a>
+                <a class="dropdown-item" href="#">nyx</a>
+                <a class="dropdown-item" href="#">orly</a>
+                <a class="dropdown-item" href="#">pacifica</a>
+                <a class="dropdown-item" href="#">penny lane organics</a>
+                <a class="dropdown-item" href="#">physicians formula</a>
+                <a class="dropdown-item" href="#">piggy paint</a>
+                <a class="dropdown-item" href="#">pure anada</a>
+                <a class="dropdown-item" href="#">rejuva minerals</a>
+                <a class="dropdown-item" href="#">revlon</a>
+                <a class="dropdown-item" href="#">sally b's skin yummies</a>
+                <a class="dropdown-item" href="#">salon perfect</a>
+                <a class="dropdown-item" href="#">sante</a>
+                <a class="dropdown-item" href="#">sinful colours</a>
+                <a class="dropdown-item" href="#">smashbox</a>
+                <a class="dropdown-item" href="#">stila</a>
+                <a class="dropdown-item" href="#">suncoat</a>
+                <a class="dropdown-item" href="#">w3llpeople</a>
+                <a class="dropdown-item" href="#">wet n wild</a>
+                <a class="dropdown-item" href="#">zora</a>
+                <a class="dropdown-item" href="#">zorah biocosmetiques</a>
+
+            </div>
+
+        </div> <br>
+
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Product Tags
+            </button>
+            <div class="dropdown-menu" class="selectProductTag" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Canadian</a>
+                <a class="dropdown-item" href="#">CertClean</a>
+                <a class="dropdown-item" href="#">Chemical Free</a>
+                <a class="dropdown-item" href="#">Dairy Free</a>
+                <a class="dropdown-item" href="#">EWG Verified</a>
+                <a class="dropdown-item" href="#">EcoCert</a>
+                <a class="dropdown-item" href="#">Fair Trade</a>
+                <a class="dropdown-item" href="#">Gluten Free</a>
+                <a class="dropdown-item" href="#">Hypoallergenic</a>
+                <a class="dropdown-item" href="#">Natural</a>
+                <a class="dropdown-item" href="#">No Talc</a>
+                <a class="dropdown-item" href="#">Non-GMO</a>
+                <a class="dropdown-item" href="#">Organic</a>
+                <a class="dropdown-item" href="#">Peanut Free Product</a>
+                <a class="dropdown-item" href="#">Sugar Free</a>
+                <a class="dropdown-item" href="#">USDA Organic</a>
+                <a class="dropdown-item" href="#">Vegan</a>
+                <a class="dropdown-item" href="#">alcohol free</a>
+                <a class="dropdown-item" href="#">cruelty free</a>
+                <a class="dropdown-item" href="#">oil free</a>
+                <a class="dropdown-item" href="#">purpicks</a>
+                <a class="dropdown-item" href="#">silicone free</a>
+                <a class="dropdown-item" href="#">water free</a>
+            </div>
+
+        </div> <br>
+
+
+
+        <form>
+            Min Price  <input id="minPrice" type="number" name="price" min="1" max="1000"> 
+            Max Price  <input id="maxPrice" type="number" name="price" min="1" max="1000"> <br><br>
+
+            Min Rating <input id="minRating" type="number" name="price" min="1" max="5">
+            Max Rating <input id="maxRating" type="number" name="price" min="1" max="5">
+
+        </form>
+
     </div>
 
 
 
     <script src="assets/javascript/app.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
 </body>
 
