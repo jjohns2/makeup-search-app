@@ -1,0 +1,22 @@
+#topic{
+    text-align: center;
+    color: rgb(250, 220, 233);
+    padding-top: 55px;
+    font-family: 'Merienda', cursive;
+    font-size: 35px;
+    text-shadow: 4px 4px 4px rgba(15, 255, 231, 0.803);
+}
+
+
+body{
+    background-image: url("../images/css-background.jpg");
+}
+
+input, textarea {
+    background-color : #f0b1e4;
+  }
+
+button{
+    box-shadow: 0 8px 16px 0 rgba(67, 87, 198, 0.902), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
