@@ -7,21 +7,6 @@
 //empty string if nothing is selected
 //no comma if there is only 1
 
-// function productTagClean() {
-//     if () {
-
-//     }
-
-//     if else () {
-
-//     }
-
-//     if else () {
-
-//     }
-// }
-
-
 var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json";
 
 $.ajax({
