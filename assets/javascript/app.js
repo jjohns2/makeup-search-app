@@ -4,8 +4,8 @@
 
 // test query - var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_tags=Vegan&product_type=blush&brand=pacifica&product_category=powder"
 var productType = "eyeliner";// linked to product type field - product_type
-var productCategory = "";// linked to product subtype field - product_category
 var productBrand = "";// linked to brand field - brand
+var productCategory = "";// linked to product subtype field - product_category
 var productTag = "";// linked to product tags field - product_tags
 var priceMin = "";// linked to price minimum field - price_greater_than
 var priceMax = "";// linked to price maximum field - price_less_than
@@ -36,7 +36,7 @@ $.ajax({
     url: queryURL,
     method: "GET"
 }).then(function (response) {
-    productBrand = response[1].brand;
+    productBrand = response[1].brand; // this will be replaced with the DYNAMICALLY GENERATED user input
     console.log("First Call", response);
     queryURL = queryURL + "&brand=" + productBrand;
 
@@ -44,7 +44,7 @@ $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        productCategory = response[0].category;
+        productCategory = response[0].category; // this will be replaced with the DYNAMICALLY GENERATED user input
         console.log("Second Call", response);
         queryURL = queryURL + "&product_category=" + productCategory;
 
@@ -52,10 +52,19 @@ $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            
+            productTag = response[0].tag_list; // this will be replaced with the DYNAMICALLY GENERATED user input
             console.log("Third Call", response);
-            
+            queryURL = queryURL + "&product_tags=" + productTag;
 
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                
+                console.log("Fourth Call", response[0].product_api_url);
+                
+
+            });
         });
     });
 });
