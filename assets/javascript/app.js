@@ -1,10 +1,6 @@
 //take the inputs from the menus from front end
 
 //search through the options in the API and results options
-<<<<<<< HEAD
-// console.log($);
-=======
->>>>>>> 5844872d23e77739ee95ee55021f094884d10d2e
 
 var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?" + "product_type=" + productType + "&product_category=" + productCategory + "&brand=" + productBrand + "&product_tags=" + productTag + "&price_greater_than=" + priceMin + "&price_less_than=" + priceMax + "&rating_greater_than=" + ratingMin + "&rating_less_than" + ratingMax;
 var productType = "";// linked to product type field - product_type
@@ -22,6 +18,7 @@ $.ajax({
 }).then(function (response) {
     console.log(response);
 });
+
     //creating loop to append each gif and rating to DOM
 
 
