@@ -63,7 +63,7 @@ $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
     console.log(tempMaxRating);
     console.log(queryURL);
 
-    var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_less_than=" + tempMaxPrice;
+    var queryURL = "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_less_than=" + tempMaxPrice;
 
     $.ajax({
       url: queryURL,
