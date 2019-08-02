@@ -3,7 +3,7 @@
 //search through the options in the API and results options
 
 // test query - var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_tags=Vegan&product_type=blush&brand=pacifica&product_category=powder"
-var productType = "eyeliner";// linked to product type field - product_type
+var productType = "";// linked to product type field - product_type
 var productBrand = "";// linked to brand field - brand
 var productCategory = "";// linked to product subtype field - product_category
 var productTag = "";// linked to product tags field - product_tags
@@ -11,64 +11,97 @@ var priceMin = "";// linked to price minimum field - price_greater_than
 var priceMax = "";// linked to price maximum field - price_less_than
 var ratingMin = "";// linked to rating minimum field - rating_greater_than
 var ratingMax = "";// linked to rating maximum field - rating_less_than
-var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?" + "product_type=" + productType;
+
 //  + "&product_category=" + productCategory + "&brand=" + productBrand + "&product_tags=" + productTag + "&price_greater_than=" + priceMin + "&price_less_than=" + priceMax + "&rating_greater_than=" + ratingMin + "&rating_less_than" + ratingMax;
 // var typequeryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=blush"
 // var brandqueryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?" + "brand=" 
 
-// $.ajax({
-//     url: typequeryURL,
-//     method: "GET"
-// }).then(function (response) {
-//     var brand = response[1].brand
-//     console.log("First Call", response);
-//     $.ajax({
-//         url: brandqueryURL + brand,
-//         method: "GET"
-//     }).then(function (response) {
-//         console.log("Second Call", response);
-//     });
-// });
+// ===========================
 
-// Loop through the array of objects, targeting each relevant item for the search query
+var tempProductType = "";
+var tempProductCat = "";
+var tempBrandMenu = "";
+var tempMaxPrice = 500;
+var tempMinRating = 0;
+var tempMinPrice = 1;
+var tempMaxRating = 5;
+var tempProductTag = "";
+var tempPT = [];
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
-    productBrand = response[1].brand; // this will be replaced with the DYNAMICALLY GENERATED user input
-    console.log("First Call", response);
-    queryURL = queryURL + "&brand=" + productBrand;
+//var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_greater_than=" + tempMinPrice + "&price_less_than=" + tempMaxPrice +"&rating_greater_than=" + tempMinRating + "&rating_less_than=" + tempMaxRating;
+// var productType = "";// linked to product type field - product_type
+// var productCategory = "";// linked to product subtype field - product_category
+// var productBrand = "";// linked to brand field - brand
+// var productTag = "";// linked to product tags field - product_tags
+// var priceMin = 0;// linked to price minimum field - price_greater_than
+// var priceMax = 500;// linked to price maximum field - price_less_than
+// var ratingMin = 0;// linked to rating minimum field - rating_greater_than
+// var ratingMax = 5;// linked to rating maximum field - rating_less_than
+
+
+
+$(".productTypeMenuClass a").on("click", function pushToProductType() {
+    var tempPT = $(this).text();
+    productType = tempPT.toLowerCase();
+    console.log("Product Type", productType);
+    // return productType;
+    var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?" + "product_type=" + productType;
+
+    // ===========================
+
+    // $.ajax({
+    //     url: typequeryURL,
+    //     method: "GET"
+    // }).then(function (response) {
+    //     var brand = response[1].brand
+    //     console.log("First Call", response);
+    //     $.ajax({
+    //         url: brandqueryURL + brand,
+    //         method: "GET"
+    //     }).then(function (response) {
+    //         console.log("Second Call", response);
+    //     });
+    // });
+
+    // Loop through the array of objects, targeting each relevant item for the search query
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        productCategory = response[0].category; // this will be replaced with the DYNAMICALLY GENERATED user input
-        console.log("Second Call", response);
-        queryURL = queryURL + "&product_category=" + productCategory;
+        productBrand = response[1].brand; // this will be replaced with the DYNAMICALLY GENERATED user input
+        console.log("First Call", response);
+        queryURL = queryURL + "&brand=" + productBrand;
 
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            productTag = response[0].tag_list; // this will be replaced with the DYNAMICALLY GENERATED user input
-            console.log("Third Call", response);
-            queryURL = queryURL + "&product_tags=" + productTag;
+            productCategory = response[0].category; // this will be replaced with the DYNAMICALLY GENERATED user input
+            console.log("Second Call", response);
+            queryURL = queryURL + "&product_category=" + productCategory;
 
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
-                
-                console.log("Fourth Call", response[0].product_api_url);
-                
+                productTag = response[0].tag_list; // this will be replaced with the DYNAMICALLY GENERATED user input
+                console.log("Third Call", response);
+                queryURL = queryURL + "&product_tags=" + productTag;
 
+                $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                }).then(function (response) {
+
+                    console.log("Fourth Call", response[0].product_api_url);
+
+
+                });
             });
         });
     });
 });
-
 // $.ajax({
 //     url: queryURL,
 //     method: "GET"
