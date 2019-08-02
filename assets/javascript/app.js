@@ -21,7 +21,7 @@ var tempPT =[];
 // var priceMax = 500;// linked to price maximum field - price_less_than
 // var ratingMin = 0;// linked to rating minimum field - rating_greater_than
 // var ratingMax = 5;// linked to rating maximum field - rating_less_than
-=======
+
 $(".productTypeMenuClass a").on("click", function pushToProductType() {
     var tempPT = $(this).text();
     tempProductType = tempPT.toLowerCase();
