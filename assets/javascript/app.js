@@ -55,9 +55,9 @@ $(".productTypeMenuClass a").on("click", function pushToProductType() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log("First Call", response); 
-        productBrand = response[1].brand; // this will be replaced with the DYNAMICALLY GENERATED user input
-        queryURL = queryURL + "&brand=" + productBrand;
+        console.log("First Call", response);
+        // productBrand = response[1].brand; // this will be replaced with the DYNAMICALLY GENERATED user input
+
         // return productBrand
         // return queryURL
 
@@ -66,7 +66,37 @@ $(".productTypeMenuClass a").on("click", function pushToProductType() {
     // return queryURL
 });
 
+$(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
+    var tempPC = $(this).text();
+    productCategory = tempPC.toLowerCase();
+    console.log(productCategory);
+    queryURL = queryURL + "&product_category=" + productCategory;
 
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+    //    productCategory = response[0].category; // this will be replaced with the DYNAMICALLY GENERATED user input
+        console.log("Second Call", response);
+    });
+    return productCategory;
+});
+
+$(".brandMenuClass a").on("click", function pushToBrandMenuClass() {
+    var tempBMC = $(this).text();
+    productBrand = tempBMC.toLowerCase();
+    console.log(productBrand);
+    queryURL = queryURL + "&brand=" + productBrand;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+    //    productCategory = response[0].category; // this will be replaced with the DYNAMICALLY GENERATED user input
+        console.log("Third Call", response);
+    });    
+    return productBrand;
+});
 
 // ===============
 
@@ -77,14 +107,7 @@ $(".productTypeMenuClass a").on("click", function pushToProductType() {
 
 // ===============
 
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// }).then(function (response) {
-//     productCategory = response[0].category; // this will be replaced with the DYNAMICALLY GENERATED user input
-//     console.log("Second Call", response);
-//     queryURL = queryURL + "&product_category=" + productCategory;
-// });
+
 
 // $.ajax({
 //     url: queryURL,
@@ -128,3 +151,71 @@ $(".productTypeMenuClass a").on("click", function pushToProductType() {
 //once a product is chosen show product information
 
 //give an option to find it in a store near them
+
+// Jessica's Code ================================================================================
+
+// $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
+//     var tempPC = $(this).text();
+//     tempProductCat = tempPC.toLowerCase();
+//     console.log(tempProductCat);
+//     return tempProductCat;
+// });
+
+// $(".brandMenuClass a").on("click", function pushToBrandMenuClass() {
+//     var tempBMC = $(this).text();
+//     tempBrandMenu = tempBMC.toLowerCase();
+//     console.log(tempBrandMenu);
+//     return tempBrandMenu;
+// });
+
+// $('example-getting-started').on('change', function (e, params) {
+//     alert(e.target.value); // OR
+//     alert(this.value); // OR
+//     alert(params.selected);
+// });
+
+// $("#submitMakeup").on("click", function () {
+//     tempMinPrice = document.getElementById("minPrice").value;
+//     tempMaxPrice = document.getElementById("maxPrice").value;
+//     tempMinRating = document.getElementById("minRating").value;
+//     tempMaxRating = document.getElementById("maxRating").value;
+
+//     console.log(tempMinPrice);
+//     console.log(tempMaxPrice);
+//     console.log(tempMinRating);
+//     console.log(tempMaxRating);
+//     console.log(queryURL);
+
+//     var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_less_than=" + tempMaxPrice;
+
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     }).then(function (response) {
+//         console.log(response);
+//         var AppendDiv = $("<div>");
+//         var ApendImage = $("<image>");
+//         var AppendImage.attr("src", );
+
+
+
+
+//         $("#AppendDiv").append()
+
+
+//     });
+// });
+
+
+// $(document).ready(function () {
+//     $('#example-getting-started').multiselect();
+// });
+
+
+// function ARRtoString(arr) {
+//     var x = arr.toString();
+//     var y = x.replace(/ /g, "+");
+//     var z = y.toLowerCase();
+//     console.log(z);
+//     return z;
+// }
