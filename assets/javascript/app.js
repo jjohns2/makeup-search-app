@@ -18,6 +18,7 @@ $.ajax({
 }).then(function (response) {
     console.log(response);
 });
+
     //creating loop to append each gif and rating to DOM
 
 
