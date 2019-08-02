@@ -70,16 +70,13 @@ $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
       method: "GET"
   }).then(function (response) {
       console.log(response);
-        var AppendDiv = $("<div>");
-        var ApendImage = $("<image>");
-        var AppendImage.attr("src", );
 
-
-    
-
-    $("#AppendDiv").append ()
-
-
+        for (var i = 0; i < response.length; i++ ) {
+          var AppendImage = $("<img>");
+          AppendImage.attr("src", response[i].image_link);
+          console.log(AppendImage);
+          $("#MakeupDiv").append(AppendImage)
+        }
   });
   });
 
