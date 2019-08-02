@@ -50,6 +50,7 @@ $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
 });
 
   $("#submitMakeup").on("click", function () {
+    $("#MakeupDiv").empty();
     tempMinPrice = document.getElementById("minPrice").value;
     tempMaxPrice = document.getElementById("maxPrice").value;
     tempMinRating = document.getElementById("minRating").value;
@@ -72,17 +73,22 @@ $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
         for (var i = 0; i < response.length; i++ ) {
           var AppendImage = $("<img>");
           AppendImage.attr("src", response[i].image_link);
+          AppendImage.addClass("clickHere");
+          AppendImage.addClass("urlImage");
           console.log(AppendImage);
-          $("#MakeupDiv").append(AppendImage)
+          $("#MakeupDiv").prepend(AppendImage)
         }
-  });
-  });
 
+        // $(document).on('click', '.clickHere', function () {
+        //   var bringTobuy = $("<a>");
+        // }
+
+  });
+  });
 
   $(document).ready(function() {
-    $('#example-getting-started').multiselect();
+    $('#getting-started').multiselect();
 });
-
 
 function ARRtoString (arr) {
   var x = arr.toString();
