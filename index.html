@@ -17,26 +17,35 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
+             <!-- ****** -->
+             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css"/>
+             <!-- ****** -->
+     <script data-main="dist/js/" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
+     
+
+    <link href="https://fonts.googleapis.com/css?family=Merienda&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-    <div class="container-fluid">
-        <h1 id="topic">Find the right make up for your skin type</h1>
+    <div class="container">
+        <h1 id="topic">Find the right makeup for your skin type</h1><br><br>
+
         <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2 productTypeButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Product Type
             </button>
-            <div class="dropdown-menu" class="productType" aria-labelledby="dropdownMenu2">
-               <button class="dropdown-item" type="button">Blush</button>
-               <button class="dropdown-item" type="button">Bronzer</button>
-               <button class="dropdown-item" type="button">Eyeliner</button>
-               <button class="dropdown-item" type="button">Eyeshadow</button>
-               <button class="dropdown-item" type="button">Foundation</button>
-               <button class="dropdown-item" type="button">Lip Liner</button>
-               <button class="dropdown-item" type="button">Lipstick</button>
-               <button class="dropdown-item" type="button">Mascara</button>
-               <button class="dropdown-item" type="button">Nail Polish</button>
+            <div class="dropdown-menu productTypeMenuClass" class="productType" aria-labelledby="dropdownMenu2">
+                <a class="dropdown-item" type="button">Blush</a>
+                <a class="dropdown-item" type="button">Bronzer</a>
+                <a class="dropdown-item" type="button">Eyeliner</a>
+                <a class="dropdown-item" type="button">Eyeshadow</a>
+                <a class="dropdown-item" type="button">Foundation</a>
+                <a class="dropdown-item" type="button">Lip Liner</a>
+                <a class="dropdown-item" type="button">Lipstick</a>
+                <a class="dropdown-item" type="button">Mascara</a>
+                <a class="dropdown-item" type="button">Nail Polish</a>
             </div>
 
 
@@ -44,156 +53,155 @@
 
 
         <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2 productCategoryButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Product Category
             </button>
-            <div class="dropdown-menu" class="selectProductCategory" aria-labelledby="dropdownMenu2">
-               <button class="dropdown-item" type="button">Cream</button>
-               <button class="dropdown-item" type="button">Powder</button>
-               <button class="dropdown-item" type="button">Pencil</button>
-               <button class="dropdown-item" type="button">Liquid</button>
-               <button class="dropdown-item" type="button">Gel</button>
-               <button class="dropdown-item" type="button">Contour</button>
-               <button class="dropdown-item" type="button">Mineral</button>
-               <button class="dropdown-item" type="button">Highlighter</button>
-               <button class="dropdown-item" type="button">Bb cc</button>
-               <button class="dropdown-item" type="button">Lip Stain</button>
-
+            <div class="dropdown-menu productCategoryMenuClass" class="selectProductCategory"
+                aria-labelledby="dropdownMenu2">
+                <a class="dropdown-item" type="button">Cream</a>
+                <a class="dropdown-item" type="button">Powder</a>
+                <a class="dropdown-item" type="button">Pencil</a>
+                <a class="dropdown-item" type="button">Liquid</a>
+                <a class="dropdown-item" type="button">Gel</a>
+                <a class="dropdown-item" type="button">Contour</a>
+                <a class="dropdown-item" type="button">Mineral</a>
+                <a class="dropdown-item" type="button">Highlighter</a>
+                <a class="dropdown-item" type="button">Bb cc</a>
+                <a class="dropdown-item" type="button">Lip Stain</a>
             </div>
 
 
         </div><br>
 
 
-        <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Brand
-            </button>
-            <div class="dropdown-menu" class="selectBrand" aria-labelledby="dropdownMenu2">
-               <button class="dropdown-item" type="button">almay</button>
-               <button class="dropdown-item" type="button">alva</button>
-               <button class="dropdown-item" type="button">anna sui</button>
-               <button class="dropdown-item" type="button">annabelle</button>
-               <button class="dropdown-item" type="button">benefit</button>
-               <button class="dropdown-item" type="button">boosh</button>
-               <button class="dropdown-item" type="button">burt's bees</button>
-               <button class="dropdown-item" type="button">butter london</button>
-               <button class="dropdown-item" type="button">c'est moi</button>
-               <button class="dropdown-item" type="button">cargo cosmetics</button>
-               <button class="dropdown-item" type="button">china glaze</button>
-               <button class="dropdown-item" type="button">clinique</button>
-               <button class="dropdown-item" type="button">coastal</button>
-               <button class="dropdown-item" type="button">classic creation</button>
-               <button class="dropdown-item" type="button">colourpop</button>
-               <button class="dropdown-item" type="button">covergirl</button>
-               <button class="dropdown-item" type="button">dalish</button>
-               <button class="dropdown-item" type="button">deciem</button>
-               <button class="dropdown-item" type="button">dior</button>
-               <button class="dropdown-item" type="button">dr. hauschka</button>
-               <button class="dropdown-item" type="button">e.l.f.</button>
-               <button class="dropdown-item" type="button">essie</button>
-               <button class="dropdown-item" type="button">fenty</button>
-               <button class="dropdown-item" type="button">glossie</button>
-               <button class="dropdown-item" type="button">green people</button>
-               <button class="dropdown-item" type="button">iman</button>
-               <button class="dropdown-item" type="button">l'oreal</button>
-               <button class="dropdown-item" type="button">lotus</button>
-               <button class="dropdown-item" type="button">cosmetics usa</button>
-               <button class="dropdown-item" type="button">maia's mineral</button>
-               <button class="dropdown-item" type="button">galaxy</button>
-               <button class="dropdown-item" type="button">marcelle</button>
-               <button class="dropdown-item" type="button">marienatie</button>
-               <button class="dropdown-item" type="button">maybelline</button>
-               <button class="dropdown-item" type="button">milani</button>
-               <button class="dropdown-item" type="button">mineral fusion</button>
-               <button class="dropdown-item" type="button">misa</button>
-               <button class="dropdown-item" type="button">mistura</button>
-               <button class="dropdown-item" type="button">moov</button>
-               <button class="dropdown-item" type="button">nudus</button>
-               <button class="dropdown-item" type="button">nyx</button>
-               <button class="dropdown-item" type="button">orly</button>
-               <button class="dropdown-item" type="button">pacifica</button>
-               <button class="dropdown-item" type="button">penny lane organics</button>
-               <button class="dropdown-item" type="button">physicians formula</button>
-               <button class="dropdown-item" type="button">piggy paint</button>
-               <button class="dropdown-item" type="button">pure anada</button>
-               <button class="dropdown-item" type="button">rejuva minerals</button>
-               <button class="dropdown-item" type="button">revlon</button>
-               <button class="dropdown-item" type="button">sally b's skin yummies</button>
-               <button class="dropdown-item" type="button">salon perfect</button>
-               <button class="dropdown-item" type="button">sante</button>
-               <button class="dropdown-item" type="button">sinful colours</button>
-               <button class="dropdown-item" type="button">smashbox</button>
-               <button class="dropdown-item" type="button">stila</button>
-               <button class="dropdown-item" type="button">suncoat</button>
-               <button class="dropdown-item" type="button">w3llpeople</button>
-               <button class="dropdown-item" type="button">wet n wild</button>
-               <button class="dropdown-item" type="button">zora</button>
-               <button class="dropdown-item" type="button">zorah biocosmetiques</button>
+            <div class="dropdown">
+                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2 brandButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Brand
+                </button>
+                <div class="dropdown-menu brandMenuClass" class="selectBrand" aria-labelledby="dropdownMenu2">
+                    <a class="dropdown-item" type="button">almay</a>
+                    <a class="dropdown-item" type="button">alva</a>
+                    <a class="dropdown-item" type="button">anna sui</a>
+                    <a class="dropdown-item" type="button">annabelle</a>
+                    <a class="dropdown-item" type="button">benefit</a>
+                    <a class="dropdown-item" type="button">boosh</a>
+                    <a class="dropdown-item" type="button">burt's bees</a>
+                    <a class="dropdown-item" type="button">butter london</a>
+                    <a class="dropdown-item" type="button">c'est moi</a>
+                    <a class="dropdown-item" type="button">cargo cosmetics</a>
+                    <a class="dropdown-item" type="button">china glaze</a>
+                    <a class="dropdown-item" type="button">clinique</a>
+                    <a class="dropdown-item" type="button">coastal</a>
+                    <a class="dropdown-item" type="button">classic creation</a>
+                    <a class="dropdown-item" type="button">colourpop</a>
+                    <a class="dropdown-item" type="button">covergirl</a>
+                    <a class="dropdown-item" type="button">dalish</a>
+                    <a class="dropdown-item" type="button">deciem</a>
+                    <a class="dropdown-item" type="button">dior</a>
+                    <a class="dropdown-item" type="button">dr. hauschka</a>
+                    <a class="dropdown-item" type="button">e.l.f.</a>
+                    <a class="dropdown-item" type="button">essie</button>
+                    <a class="dropdown-item" type="button">fenty</a>
+                    <a class="dropdown-item" type="button">glossie</a>
+                    <a class="dropdown-item" type="button">green people</a>
+                    <a class="dropdown-item" type="button">iman</a>
+                    <a class="dropdown-item" type="button">l'oreal</a>
+                    <a class="dropdown-item" type="button">lotus</a>
+                    <a class="dropdown-item" type="button">cosmetics usa</a>
+                    <a class="dropdown-item" type="button">maia's mineral</a>
+                    <a class="dropdown-item" type="button">galaxy</a>
+                    <a class="dropdown-item" type="button">marcelle</a>
+                    <a class="dropdown-item" type="button">marienatie</a>
+                    <a class="dropdown-item" type="button">maybelline</a>
+                    <a class="dropdown-item" type="button">milani</a>
+                    <a class="dropdown-item" type="button">mineral fusion</a>
+                    <a class="dropdown-item" type="button">misa</a>
+                    <a class="dropdown-item" type="button">mistura</a>
+                    <a class="dropdown-item" type="button">moov</a>
+                    <a class="dropdown-item" type="button">nudus</a>
+                    <a class="dropdown-item" type="button">nyx</a>
+                    <a class="dropdown-item" type="button">orly</a>
+                    <a class="dropdown-item" type="button">pacifica</a>
+                    <a class="dropdown-item" type="button">penny lane organics</a>
+                    <a class="dropdown-item" type="button">physicians formula</a>
+                    <a class="dropdown-item" type="button">piggy paint</a>
+                    <a class="dropdown-item" type="button">pureanada</a>
+                    <a class="dropdown-item" type="button">rejuva minerals</a>
+                    <a class="dropdown-item" type="button">revlon</a>
+                    <a class="dropdown-item" type="button">sallyb'skinyummies</button>
+                    <a class="dropdown-item" type="button">salon perfect</a>
+                    <a class="dropdown-item" type="button">sante</a>
+                    <a class="dropdown-item" type="button">sinful colours</a>
+                    <a class="dropdown-item" type="button">smashbox</a>
+                    <a class="dropdown-item" type="button">stila</a>
+                    <a class="dropdown-item" type="button">suncoat</a>
+                    <a class="dropdown-item" type="button">w3llpeople</a>
+                    <a class="dropdown-item" type="button">wet n wild</a>
+                    <a class="dropdown-item" type="button">zora</a>
+                    <a class="dropdown-item" type="button">zorahbiocosmetiques</a>
 
+                </div>
+
+            </div> <br>
+
+            <select id="example-getting-started" multiple="multiple">
+                    <option class="dropdown-item" val="canadian">Canadian</option>
+                    <option class="dropdown-item">CertClean</option>
+                    <option class="dropdown-item">Chemical Free</option>
+                    <option class="dropdown-item">Dairy Free</option>
+                    <option class="dropdown-item">EWG Verified</option>
+                    <option class="dropdown-item">EcoCert</option>
+                    <option class="dropdown-item">Fair Trade</button>
+                    <option class="dropdown-item">Gluten Free</button>
+                    <option class="dropdown-item">Hypoallergenic</button>
+                    <option class="dropdown-item">Natural</button>
+                    <option class="dropdown-item">No Talc</option>
+                    <option class="dropdown-item" type="button">Non-GMO</option>
+                    <option class="dropdown-item" type="button">Organic</option>
+                    <option class="dropdown-item" type="button">Peanut Free Product</option>
+                    <option class="dropdown-item" type="button">Sugar Free</option>
+                    <option class="dropdown-item" type="button">USDA Organic</option>
+                    <option class="dropdown-item" type="button">Vegan</option>
+                    <option class="dropdown-item" type="button">alcohol free</option>
+                    <option class="dropdown-item" type="button">cruelty free</option>
+                    <option class="dropdown-item" type="button">oil free</option>
+                    <option class="dropdown-item" type="button">purpicks</option>
+                    <option class="dropdown-item" type="button">silicone free</option>
+                    <option class="dropdown-item" type="button">water free</option>
+                </select>
+
+
+
+            <form>
+                <span style="color:rgb(252, 222, 254)">Min Price</span> <input id="minPrice" type="number" name="price"
+                    min="0" max="500">
+                <span style="color:rgb(252, 222, 254)">Max Price</span> <input id="maxPrice" type="number" name="price"
+                    min="1" max="500"> <br><br>
+
+                <span style="color:rgb(252, 222, 254)">Min Rating</span> <input id="minRating" type="number"
+                    name="price" min="1" max="5">
+                <span style="color:rgb(252, 222, 254)">Max Rating</span> <input id="maxRating" type="number"
+                    name="price" min="1" max="5">
+
+            </form> <br>
+
+            <div>
+                <button class="btn btn-light" type="submit" id="submitMakeup">Submit</button>
             </div>
 
-        </div> <br>
+        </div>
 
-        <div class="dropdown">
-            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Product Tags
-            </button>
-            <div class="dropdown-menu" class="selectProductTag" aria-labelledby="dropdownMenu2">
-               <button class="dropdown-item" type="button">Canadian</button>
-               <button class="dropdown-item" type="button">CertClean</button>
-               <button class="dropdown-item" type="button">Chemical Free</button>
-               <button class="dropdown-item" type="button">Dairy Free</button>
-               <button class="dropdown-item" type="button">EWG Verified</button>
-               <button class="dropdown-item" type="button">EcoCert</button>
-               <button class="dropdown-item" type="button">Fair Trade</button>
-               <button class="dropdown-item" type="button">Gluten Free</button>
-               <button class="dropdown-item" type="button">Hypoallergenic</button>
-               <button class="dropdown-item" type="button">Natural</button>
-               <button class="dropdown-item" type="button">No Talc</button>
-               <button class="dropdown-item" type="button">Non-GMO</button>
-               <button class="dropdown-item" type="button">Organic</button>
-               <button class="dropdown-item" type="button">Peanut Free Product</button>
-               <button class="dropdown-item" type="button">Sugar Free</button>
-               <button class="dropdown-item" type="button">USDA Organic</button>
-               <button class="dropdown-item" type="button">Vegan</button>
-               <button class="dropdown-item" type="button">alcohol free</button>
-               <button class="dropdown-item" type="button">cruelty free</button>
-               <button class="dropdown-item" type="button">oil free</button>
-               <button class="dropdown-item" type="button">purpicks</button>
-               <button class="dropdown-item" type="button">silicone free</button>
-               <button class="dropdown-item" type="button">water free</button>
-            </div>
+        <script src="assets/javascript/app.js"></script>
 
-        </div> <br>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
 
-
-
-        <form>
-            Min Price <input id="minPrice" type="number" name="price" min="1" max="1000">
-            Max Price <input id="maxPrice" type="number" name="price" min="1" max="1000"> <br><br>
-
-            Min Rating <input id="minRating" type="number" name="price" min="1" max="5">
-            Max Rating <input id="maxRating" type="number" name="price" min="1" max="5">
-
-        </form>
-
-    </div>
-
-
-
-    <script src="assets/javascript/app.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
 </body>
 
