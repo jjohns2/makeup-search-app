@@ -41,8 +41,9 @@ var tempPT = [];
 
 
 $(".productTypeMenuClass a").on("click", function pushToProductType() {
-    var tempPT = $(this).text();
-    productType = tempPT.toLowerCase();
+    // var tempPT = $(this).text();
+    // productType = tempPT.toLowerCase();
+    var productType = $(this).text().toLowerCase();
     console.log("Product Type", productType);
     // return productType;
     queryURL = queryURL + "product_type=" + productType;
@@ -67,8 +68,9 @@ $(".productTypeMenuClass a").on("click", function pushToProductType() {
 });
 
 $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
-    var tempPC = $(this).text();
-    productCategory = tempPC.toLowerCase();
+    // var tempPC = $(this).text();
+    // productCategory = tempPC.toLowerCase();
+    var productCategory = $(this).text().toLowerCase();
     console.log(productCategory);
     queryURL = queryURL + "&product_category=" + productCategory;
 
@@ -83,8 +85,9 @@ $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
 });
 
 $(".brandMenuClass a").on("click", function pushToBrandMenuClass() {
-    var tempBMC = $(this).text();
-    productBrand = tempBMC.toLowerCase();
+    // var tempBMC = $(this).text();
+    // productBrand = tempBMC.toLowerCase();
+    var productBrand = $(this).text().toLowerCase();
     console.log(productBrand);
     queryURL = queryURL + "&brand=" + productBrand;
 
