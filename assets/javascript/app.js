@@ -1,7 +1,5 @@
 //take the inputs from the menus from front end
-
 // //search through the options in the API and results options
-
 var tempProductType = "";
 var tempProductCat = "";
 var tempBrandMenu = "";
@@ -69,6 +67,8 @@ $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
   }).then(function (response) {
       console.log(response);
 
+
+      var resultsContainerSection = $("<section class = 'results-container'>")
         for (var i = 0; i < response.length; i++ ) {
           var singleResultDiv = $("<div class='result-container'>");
           var AppendImage = $("<img class='result'>");
@@ -90,13 +90,7 @@ $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
 
   $(document).ready(function() {
     $('#example-getting-started').multiselect();
-    $(function () {
-      $('#example-getting-started').multiselect({
-          includeSelectAllOption: true,
-          nonSelectedText: 'Select Product Tag'
-      });
-  });
-
+   
 });
 
 function ARRtoString (arr) {
