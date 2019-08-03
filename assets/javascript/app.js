@@ -68,19 +68,20 @@ $("#submitMakeup").on("click", function () {
     url: queryURL,
     method: "GET"
   }).then(function (response) {
-    console.log(response);
-
-    for (var i = 0; i < response.length; i++) {
-      var AppendImage = $("<img>");
-      AppendImage.attr("src", response[i].image_link);
-      AppendImage.attr("link", response[i].product_link);
-      AppendImage.addClass("clickHere");
-      AppendImage.addClass("urlImage");
-      console.log(AppendImage);
-      $("#MakeupDiv").prepend(AppendImage)
-    }
-  });
-});
+      console.log(response);
+      var resultsContainerSection = $("<section class = 'results-container'>")
+        for (var i = 0; i < response.length; i++ ) {
+          var singleResultDiv = $("<div class='result-container'>");
+          var AppendImage = $("<img class='result'>");
+          AppendImage.attr("src", response[i].image_link);
+          AppendImage.attr("link", response[i].product_link);
+          AppendImage.addClass("clickHere");
+          AppendImage.addClass("urlImage");
+          console.log(AppendImage);
+          singleResultDiv.prepend(AppendImage);
+          resultsContainerSection.prepend(singleResultDiv);
+          $("#MakeupDiv").append(resultsContainerSection);
+        }
 
 //function to allow the drop-down multiselect to work - JJ
 $(document).ready(function () {
@@ -115,4 +116,3 @@ function ARRtoString(arr) {
   console.log(z);
   return z;
 }
-
