@@ -1,7 +1,5 @@
 //take the inputs from the menus from front end
-
 // //search through the options in the API and results options
-
 var tempProductType = "";
 var tempProductCat = "";
 var tempBrandMenu = "";
