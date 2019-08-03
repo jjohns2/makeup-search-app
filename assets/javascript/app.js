@@ -69,7 +69,7 @@ $("#submitMakeup").on("click", function () {
     method: "GET"
   }).then(function (response) {
       console.log(response);
-      var resultsContainerSection = $("<section class = 'results-container'>")
+      var resultsContainerSection = $("<section class = 'results-container'>");
         for (var i = 0; i < response.length; i++ ) {
           var singleResultDiv = $("<div class='result-container'>");
           var AppendImage = $("<img class='result'>");
@@ -116,3 +116,10 @@ function ARRtoString(arr) {
   console.log(z);
   return z;
 }
+
+$(document).ready(function(){
+  $(".dropdown-toggle").css({ "color": "#212529",
+    "background-color": "#ffc107",
+    "border-color": "#ffc107"});
+    $(".multiselect-selected-text").text('Select Tags');
+});
