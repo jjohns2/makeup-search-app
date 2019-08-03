@@ -1,31 +1,106 @@
 //take the inputs from the menus from front end
 
-//search through the options in the API and results options
+// //search through the options in the API and results options
 
-var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?" + "product_type=" + productType + "&product_category=" + productCategory + "&brand=" + productBrand + "&product_tags=" + productTag + "&price_greater_than=" + priceMin + "&price_less_than=" + priceMax + "&rating_greater_than=" + ratingMin + "&rating_less_than" + ratingMax;
-var productType = "";// linked to product type field - product_type
-var productCategory = "";// linked to product subtype field - product_category
-var productBrand = "";// linked to brand field - brand
-var productTag = "";// linked to product tags field - product_tags
-var priceMin = 0;// linked to price minimum field - price_greater_than
-var priceMax = 500;// linked to price maximum field - price_less_than
-var ratingMin = 0;// linked to rating minimum field - rating_greater_than
-var ratingMax = 5;// linked to rating maximum field - rating_less_than
+var tempProductType = "";
+var tempProductCat = "";
+var tempBrandMenu = "";
+var tempMaxPrice = 500;
+var tempMinRating = 0;
+var tempMinPrice = 1;
+var tempMaxRating = 5;
+var tempProductTag = "";
+var tempPT =[];
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
-    console.log(response);
+//var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_greater_than=" + tempMinPrice + "&price_less_than=" + tempMaxPrice +"&rating_greater_than=" + tempMinRating + "&rating_less_than=" + tempMaxRating;
+// var productType = "";// linked to product type field - product_type
+// var productCategory = "";// linked to product subtype field - product_category
+// var productBrand = "";// linked to brand field - brand
+// var productTag = "";// linked to product tags field - product_tags
+// var priceMin = 0;// linked to price minimum field - price_greater_than
+// var priceMax = 500;// linked to price maximum field - price_less_than
+// var ratingMin = 0;// linked to rating minimum field - rating_greater_than
+// var ratingMax = 5;// linked to rating maximum field - rating_less_than
+
+$(".productTypeMenuClass a").on("click", function pushToProductType() {
+    var tempPT = $(this).text();
+    tempProductType = tempPT.toLowerCase();
+    console.log(tempProductType);
+    return tempProductType;
+  });
+
+$(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
+    var tempPC = $(this).text();
+    tempProductCat = tempPC.toLowerCase();
+    console.log(tempProductCat);
+    return tempProductCat;
+  });
+
+  $(".brandMenuClass a").on("click", function pushToBrandMenuClass() {
+    var tempBMC = $(this).text();
+    tempBrandMenu = tempBMC.toLowerCase();
+    console.log(tempBrandMenu);
+    return tempBrandMenu;
+  });
+
+  $('example-getting-started').on('change', function(e, params) {
+    alert(e.target.value); // OR
+    alert(this.value); // OR
+    alert(params.selected); 
 });
 
-    //creating loop to append each gif and rating to DOM
+  $("#submitMakeup").on("click", function () {
+    tempMinPrice = document.getElementById("minPrice").value;
+    tempMaxPrice = document.getElementById("maxPrice").value;
+    tempMinRating = document.getElementById("minRating").value;
+    tempMaxRating = document.getElementById("maxRating").value;
+
+    console.log(tempMinPrice);
+    console.log(tempMaxPrice);
+    console.log(tempMinRating);
+    console.log(tempMaxRating);
+    console.log(queryURL);
+
+    var queryURL = "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_less_than=" + tempMaxPrice;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+  }).then(function (response) {
+      console.log(response);
+
+var resultsContainerSection = $("<section class='results-container'>");
+
+        for (var i = 0; i < response.length; i++ ) {
+
+          var singleResultDiv = $("<div class='result-container'>");
+          var AppendImage = $("<img class='result'>");
+          AppendImage.attr("src", response[i].image_link);
+          console.log(AppendImage);
+          singleResultDiv.prepend(AppendImage);
+          resultsContainerSection.prepend(singleResultDiv);
+          $("#MakeupDiv").append(resultsContainerSection);
+        }
+  });
+  });
 
 
-//dynamically display options on the front end
+  $(document).ready(function() {
+    $('#example-getting-started').multiselect();
+    $(function () {
+      $('#example-getting-started').multiselect({
+          includeSelectAllOption: true,
+          nonSelectedText: 'Select Product Tag'
+      });
+  });
 
-//give the user an option to choose from the options
+});
 
-//once a product is chosen show product information
 
-//give an option to find it in a store near them
+function ARRtoString (arr) {
+  var x = arr.toString();
+  var y = x.replace(/ /g, "+");
+  var z = y.toLowerCase();
+  console.log(z);
+  return z;
+}
