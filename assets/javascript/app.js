@@ -8,7 +8,7 @@ var tempMinRating = 0;
 var tempMinPrice = 1;
 var tempMaxRating = 5;
 var tempProductTag = "";
-var tempPT =[];
+var tempPT = [];
 
 //var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_greater_than=" + tempMinPrice + "&price_less_than=" + tempMaxPrice +"&rating_greater_than=" + tempMinRating + "&rating_less_than=" + tempMaxRating;
 // var productType = "";// linked to product type field - product_type
@@ -21,86 +21,188 @@ var tempPT =[];
 // var ratingMax = 5;// linked to rating maximum field - rating_less_than
 
 $(".productTypeMenuClass a").on("click", function pushToProductType() {
-    var tempPT = $(this).text();
-    tempProductType = tempPT.toLowerCase();
-    console.log(tempProductType);
-    return tempProductType;
-  });
+  var tempPT = $(this).text();
+  tempProductType = tempPT.toLowerCase();
+  console.log(tempProductType);
+  return tempProductType;
+});
 
 $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
-    var tempPC = $(this).text();
-    tempProductCat = tempPC.toLowerCase();
-    console.log(tempProductCat);
-    return tempProductCat;
-  });
-
-  $(".brandMenuClass a").on("click", function pushToBrandMenuClass() {
-    var tempBMC = $(this).text();
-    tempBrandMenu = tempBMC.toLowerCase();
-    console.log(tempBrandMenu);
-    return tempBrandMenu;
-  });
-
-  $('example-getting-started').on('change', function(e, params) {
-    alert(e.target.value); // OR
-    alert(this.value); // OR
-    alert(params.selected); 
+  var tempPC = $(this).text();
+  tempProductCat = tempPC.toLowerCase();
+  console.log(tempProductCat);
+  return tempProductCat;
 });
 
-  $("#submitMakeup").on("click", function () {
-    tempMinPrice = document.getElementById("minPrice").value;
-    tempMaxPrice = document.getElementById("maxPrice").value;
-    tempMinRating = document.getElementById("minRating").value;
-    tempMaxRating = document.getElementById("maxRating").value;
+$(".brandMenuClass a").on("click", function pushToBrandMenuClass() {
+  var tempBMC = $(this).text();
+  tempBrandMenu = tempBMC.toLowerCase();
+  console.log(tempBrandMenu);
+  return tempBrandMenu;
+});
 
-    console.log(tempMinPrice);
-    console.log(tempMaxPrice);
-    console.log(tempMinRating);
-    console.log(tempMaxRating);
-    console.log(queryURL);
+$('example-getting-started').on('change', function (e, params) {
+  alert(e.target.value); // OR
+  alert(this.value); // OR
+  alert(params.selected);
+});
 
-    var queryURL = "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_less_than=" + tempMaxPrice;
+$("#submitMakeup").on("click", function () {
+  tempMinPrice = document.getElementById("minPrice").value;
+  tempMaxPrice = document.getElementById("maxPrice").value;
+  tempMinRating = document.getElementById("minRating").value;
+  tempMaxRating = document.getElementById("maxRating").value;
 
-    $.ajax({
-      url: queryURL,
-      method: "GET"
+  console.log(tempMinPrice);
+  console.log(tempMaxPrice);
+  console.log(tempMinRating);
+  console.log(tempMaxRating);
+  console.log(queryURL);
+
+  var queryURL = "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_less_than=" + tempMaxPrice;
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
   }).then(function (response) {
-      console.log(response);
+    console.log(response);
 
-        for (var i = 0; i < response.length; i++ ) {
-          var singleResultDiv = $("<div class='result-container'>");
-          var AppendImage = $("<img class='result'>");
-          AppendImage.attr("src", response[i].image_link);
-          AppendImage.addClass("clickHere");
-          AppendImage.addClass("urlImage");
-          console.log(AppendImage);
-          singleResultDiv.prepend(AppendImage);
-          resultsContainerSection.prepend(singleResultDiv);
-          $("#MakeupDiv").append(resultsContainerSection);
-        }
+    for (var i = 0; i < response.length; i++) {
+      var singleResultDiv = $("<div class='result-container'>");
+      var AppendImage = $("<img class='result'>");
+      AppendImage.attr("src", response[i].image_link);
+      AppendImage.addClass("clickHere");
+      AppendImage.addClass("urlImage");
+      console.log(AppendImage);
+      singleResultDiv.prepend(AppendImage);
+      resultsContainerSection.prepend(singleResultDiv);
+      $("#MakeupDiv").append(resultsContainerSection);
+    }
 
-        // $(document).on('click', '.clickHere', function () {
-        //   var bringTobuy = $("<a>");
-        // }
+    // $(document).on('click', '.clickHere', function () {
+    //   var bringTobuy = $("<a>");
+    // }
 
   });
-  });
+});
 
-  $(document).ready(function() {
-    $('#example-getting-started').multiselect();
-    $(function () {
-      $('#example-getting-started').multiselect({
-          includeSelectAllOption: true,
-          nonSelectedText: 'Select Product Tag'
-      });
+$(document).ready(function () {
+  $('#example-getting-started').multiselect();
+  $(function () {
+    $('#example-getting-started').multiselect({
+      includeSelectAllOption: true,
+      nonSelectedText: 'Select Product Tag'
+    });
   });
 
 });
 
-function ARRtoString (arr) {
+function ARRtoString(arr) {
   var x = arr.toString();
   var y = x.replace(/ /g, "+");
   var z = y.toLowerCase();
   console.log(z);
   return z;
 }
+
+var map;
+var service;
+var infowindow;
+var locationURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + locationField + "&key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0"
+$.ajax({
+  url: locationURL,
+  method: "GET"
+}).then(function (response) {
+  console.log(response);
+
+// https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+
+});
+
+function initialize() {
+  var userLocation = new google.maps.LatLng(locationLatLng);
+  // var userLocation = new google.maps.LatLng(-33.8665433,151.1956316);
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: userLocation,
+    zoom: 15
+  });
+
+  var request = {
+    location: userLocation,
+    radius: '25',
+    query: chosenBrand + 'cosmetics',
+  };
+
+  service = new google.maps.places.PlacesService(map);
+  service.textSearch(request, callback);
+}
+
+initialize();
+
+function callback(results, status) {
+
+  function createMarker(places) {
+    var bounds = new google.maps.LatLngBounds();
+    var placesList = document.getElementById('places');
+
+    for (var i = 0, place; place = places[i]; i++) {
+      var image = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      var marker = new google.maps.Marker({
+        map: map,
+        icon: image,
+        title: place.name,
+        position: place.geometry.location
+      });
+
+      var li = document.createElement('li');
+      li.textContent = place.name;
+      placesList.appendChild(li);
+
+      bounds.extend(place.geometry.location);
+    }
+    map.fitBounds(bounds);
+  }
+
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      var place = results[i];
+      createMarker(results[i]);
+    }
+  }
+}
+
+// function createMarker(places) {
+//   var bounds = new google.maps.LatLngBounds();
+//   var placesList = document.getElementById('places');
+
+//   for (var i = 0, place; place = places[i]; i++) {
+//     var image = {
+//       url: place.icon,
+//       size: new google.maps.Size(71, 71),
+//       origin: new google.maps.Point(0, 0),
+//       anchor: new google.maps.Point(17, 34),
+//       scaledSize: new google.maps.Size(25, 25)
+//     };
+
+//     var marker = new google.maps.Marker({
+//       map: map,
+//       icon: image,
+//       title: place.name,
+//       position: place.geometry.location
+//     });
+
+//     var li = document.createElement('li');
+//     li.textContent = place.name;
+//     placesList.appendChild(li);
+
+//     bounds.extend(place.geometry.location);
+//   }
+//   map.fitBounds(bounds);
+// }
