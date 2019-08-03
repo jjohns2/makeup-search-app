@@ -69,21 +69,24 @@ $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
   }).then(function (response) {
       console.log(response);
 
-var resultsContainerSection = $("<section class='results-container'>");
-
         for (var i = 0; i < response.length; i++ ) {
-
           var singleResultDiv = $("<div class='result-container'>");
           var AppendImage = $("<img class='result'>");
           AppendImage.attr("src", response[i].image_link);
+          AppendImage.addClass("clickHere");
+          AppendImage.addClass("urlImage");
           console.log(AppendImage);
           singleResultDiv.prepend(AppendImage);
           resultsContainerSection.prepend(singleResultDiv);
           $("#MakeupDiv").append(resultsContainerSection);
         }
-  });
-  });
 
+        // $(document).on('click', '.clickHere', function () {
+        //   var bringTobuy = $("<a>");
+        // }
+
+  });
+  });
 
   $(document).ready(function() {
     $('#example-getting-started').multiselect();
@@ -95,7 +98,6 @@ var resultsContainerSection = $("<section class='results-container'>");
   });
 
 });
-
 
 function ARRtoString (arr) {
   var x = arr.toString();
