@@ -1,3 +1,5 @@
+* { outline: 1px solid rgb(92, 7, 7)}
+
 html{
     box-sizing: border-box;
 }
@@ -32,6 +34,12 @@ button{
 
 }
 
+ .colorChange{
+    color: #212529;
+    background-color: #ffc107;
+    border-color: #ffc107;
+} 
+
 
 input, textarea {
     background-color : #f0b1e4;
@@ -52,23 +60,25 @@ input, textarea {
 }
 
 .results-container {
+    
 	display: flex;
 	flex-wrap: wrap;
-	margin-bottom: 30px;
-}
+    margin-bottom: 30px;
+    background-color: white;
+  
 
-.result-container {
-    margin: 30px 30px 0 0;
-   
+
 }
+    /* 
+    .result-container {
+        margin: 30px 30px 0 0;
+    
+    } */
 
 section{
     flex-wrap: wrap;
 }
 
-select option {
-    color: green;
-}
 
 @media only screen and (min-width: 768px){
 
