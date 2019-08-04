@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="wrapper">
         <div class="row">
             <div class="col-sm-12">
 
@@ -68,6 +68,8 @@
                         </button>
                         <div class="dropdown-menu productCategoryMenuClass" class="selectProductCategory"
                             aria-labelledby="dropdownMenu2">
+
+                      
                             <a class="dropdown-item" type="button">Cream</a>
                             <a class="dropdown-item" type="button">Powder</a>
                             <a class="dropdown-item" type="button">Pencil</a>
@@ -78,11 +80,17 @@
                             <a class="dropdown-item" type="button">Highlighter</a>
                             <a class="dropdown-item" type="button">Bb cc</a>
                             <a class="dropdown-item" type="button">Lip Stain</a>
-
-                        </div>
-
-
-                    </div><br>
+                            <a class="dropdown-item" type="button">Cream</a>
+                            <a class="dropdown-item" type="button">Powder</a>
+                            <a class="dropdown-item" type="button">Pencil</a>
+                            <a class="dropdown-item" type="button">Liquid</a>
+                            <a class="dropdown-item" type="button">Gel</a>
+                            <a class="dropdown-item" type="button">Contour</a>
+                            <a class="dropdown-item" type="button">Mineral</a>
+                            <a class="dropdown-item" type="button">Highlighter</a>
+                            <a class="dropdown-item" type="button">Bb cc</a>
+                            <a class="dropdown-item" type="button">Lip Stain</a> </div>
+                    </div> <br>
 
 
                     <div class="dropdown">
@@ -155,7 +163,8 @@
 
                     </div> <br>
 
-                    <select id="getting-started" multiple="multiple">
+
+                    <select class="btn btn-default" id="example-getting-started" multiple="multiple">
                         <option class="dropdown-item" val="canadian">Canadian</option>
                         <option class="dropdown-item">CertClean</option>
                         <option class="dropdown-item">Chemical Free</option>
@@ -179,9 +188,8 @@
                         <option class="dropdown-item" type="button">purpicks</option>
                         <option class="dropdown-item" type="button">silicone free</option>
                         <option class="dropdown-item" type="button">water free</option>
-                    </select>
 
-
+                    </select><br><br>
 
                     <form>
                         <span style="color:rgb(252, 222, 254)">Min Price</span> <input id="minPrice" type="number"
@@ -200,28 +208,21 @@
                         <button class="btn btn-light" type="submit" id="submitMakeup">Submit</button>
                     </div> <br>
 
-                    <div>
+                    <div id="mapdiv">
                         <div id="map"></div>
-                    </div>
+                    </div> <br>
                 </div>
-            </div>
+            </div>  
         </div>
+
     </div>
+  
+     <div id="MakeupDiv"> </div>
 
-    <div id="MakeupDiv"></div>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0&callback=initMap"
+        async defer></script> -->
 
-    <script type="text/javascript">
-        var map;
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: 41.896359, lng: -87.618844 },
-                zoom: 9
-            });
-        }
-    </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0&callback=initMap"
-        async defer></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0&libraries=places"></script>
 
     <script src="assets/javascript/app.js"></script>
 
