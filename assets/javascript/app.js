@@ -1,23 +1,4 @@
-//take the inputs from the menus from front end
-
-//search through the options in the API and results options
-
-// test query - var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_tags=Vegan&product_type=blush&brand=pacifica&product_category=powder"
-var productType = "";// linked to product type field - product_type
-var productCategory = "";// linked to product subtype field - product_category
-var productBrand = "";// linked to brand field - brand
-var productTag = "";// linked to product tags field - product_tags
-var priceMin = "";// linked to price minimum field - price_greater_than
-var priceMax = "";// linked to price maximum field - price_less_than
-var ratingMin = "";// linked to rating minimum field - rating_greater_than
-var ratingMax = "";// linked to rating maximum field - rating_less_than
-var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?";
-//  + "&product_category=" + productCategory + "&brand=" + productBrand + "&product_tags=" + productTag + "&price_greater_than=" + priceMin + "&price_less_than=" + priceMax + "&rating_greater_than=" + ratingMin + "&rating_less_than" + ratingMax;
-// var typequeryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=blush"
-// var brandqueryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?" + "brand=" 
-
-// ===========================
-
+//Variables for all the Things - JJ
 var tempProductType = "";
 var tempProductCat = "";
 var tempBrandMenu = "";
@@ -28,197 +9,223 @@ var tempMaxRating = 5;
 var tempProductTag = "";
 var tempPT = [];
 
-//var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_greater_than=" + tempMinPrice + "&price_less_than=" + tempMaxPrice +"&rating_greater_than=" + tempMinRating + "&rating_less_than=" + tempMaxRating;
-// var productType = "";// linked to product type field - product_type
-// var productCategory = "";// linked to product subtype field - product_category
-// var productBrand = "";// linked to brand field - brand
-// var productTag = "";// linked to product tags field - product_tags
-// var priceMin = 0;// linked to price minimum field - price_greater_than
-// var priceMax = 500;// linked to price maximum field - price_less_than
-// var ratingMin = 0;// linked to rating minimum field - rating_greater_than
-// var ratingMax = 5;// linked to rating maximum field - rating_less_than
-
-
-
+//taking Product Type Input and formatting to Query - JJ
+//Changing Button Text to What Is Selected - JJ
 $(".productTypeMenuClass a").on("click", function pushToProductType() {
-    // var tempPT = $(this).text();
-    // productType = tempPT.toLowerCase();
-    var productType = $(this).text().toLowerCase();
-    console.log("Product Type", productType);
-    // return productType;
-    queryURL = queryURL + "product_type=" + productType;
-
-    // ===========================
-
-    // Loop through the array of objects, targeting each relevant item for the search query
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        console.log("First Call", response);
-        // productBrand = response[1].brand; // this will be replaced with the DYNAMICALLY GENERATED user input
-
-        // return productBrand
-        // return queryURL
-
-    });
-    // return productBrand
-    // return queryURL
+  var tempPT = $(this).text();
+  tempProductType = tempPT.toLowerCase();
+  console.log(tempProductType);
+  document.getElementById("productTypeButton").textContent = tempPT;
+  return tempProductType;
 });
 
+//taking Product Category Input and formatting to Query - JJ
+//Changing Button Text to What Is Selected - JJ
 $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
-    // var tempPC = $(this).text();
-    // productCategory = tempPC.toLowerCase();
-    var productCategory = $(this).text().toLowerCase();
-    console.log(productCategory);
-    queryURL = queryURL + "&product_category=" + productCategory;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-    //    productCategory = response[0].category; // this will be replaced with the DYNAMICALLY GENERATED user input
-        console.log("Second Call", response);
-    });
-    return productCategory;
+  var tempPC = $(this).text();
+  tempProductCat = tempPC.toLowerCase();
+  console.log(tempProductCat);
+  document.getElementById("productCategoryButton").textContent = tempPC;
+  return tempProductCat;
 });
 
+//taking Brand Input and formatting to Query - JJ
+//Changing Button Text to What Is Selected - JJ
 $(".brandMenuClass a").on("click", function pushToBrandMenuClass() {
-    // var tempBMC = $(this).text();
-    // productBrand = tempBMC.toLowerCase();
-    var productBrand = $(this).text().toLowerCase();
-    console.log(productBrand);
-    queryURL = queryURL + "&brand=" + productBrand;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-    //    productCategory = response[0].category; // this will be replaced with the DYNAMICALLY GENERATED user input
-        console.log("Third Call", response);
-    });    
-    return productBrand;
+  var tempBMC = $(this).text();
+  tempBrandMenu = tempBMC.toLowerCase();
+  console.log(tempBrandMenu);
+  var uptempBMC = tempBMC.charAt(0).toUpperCase() + tempBMC.slice(1)
+  document.getElementById("brandButton").textContent = uptempBMC;
+  return tempBrandMenu;
 });
 
-// ===============
+//input collected from multi-select drop down menu - JJ
+$('example-getting-started').on('change', function (e, params) {
+  alert(e.target.value); // OR
+  alert(this.value); // OR
+  alert(params.selected);
+});
 
-// $(".productCategoryMenuClass a").on("click", function pushToProductType() {
-//     console.log("End Log", queryURL);    
+//AJAX Call
+//Taking Input - JJ
+$("#submitMakeup").on("click", function () {
+  $("#MakeupDiv").empty();
+  tempMinPrice = document.getElementById("minPrice").value;
+  tempMaxPrice = document.getElementById("maxPrice").value;
+  tempMinRating = document.getElementById("minRating").value;
+  tempMaxRating = document.getElementById("maxRating").value;
 
-// });
+  console.log(tempMinPrice);
+  console.log(tempMaxPrice);
+  console.log(tempMinRating);
+  console.log(tempMaxRating);
+  console.log(queryURL);
 
-// ===============
+  var queryURL = "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_less_than=" + tempMaxPrice;
 
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+      console.log(response);
+      var resultsContainerSection = $("<section class = 'results-container'>");
+        for (var i = 0; i < response.length; i++ ) {
+          var singleResultDiv = $("<div class='result-container'>");
+          var AppendImage = $("<img class='result'>");
+          AppendImage.attr("src", response[i].image_link);
+          AppendImage.attr("link", response[i].product_link);
+          AppendImage.addClass("clickHere");
+          AppendImage.addClass("urlImage");
+          console.log(AppendImage);
+          singleResultDiv.prepend(AppendImage);
+          resultsContainerSection.prepend(singleResultDiv);
+          $("#MakeupDiv").append(resultsContainerSection);
+        }
+  });
+});
 
+//function to allow the drop-down multiselect to work - JJ
+$(document).ready(function () {
+  $('#getting-started').multiselect();
+});
 
+$('#getting-started').multiselect({
+  onChange: function() {
+      console.log($('#getting-started').val());
+      var tags = $('#getting-started option:selected');
+      for (var i = 0; i > tags.length; i++){
+        if (tag.indexOf(tags) > -1) {
+          tempPT.push([$(tag).val()]);
+        }
+    ARRtoString(tempPT);
+    return tempPT;
+      }
+    }
+  });
+
+//when an image is clicked a new tab where you can buy the product appears - JJ
+$(document).on('click', '.clickHere', function () {
+  var state = $(this).attr("link");
+  window.open(state);
+});
+
+//for Product Tag when it works - JJ
+function ARRtoString(arr) {
+  var x = arr.toString();
+  var y = x.replace(/ /g, "+");
+  var z = y.toLowerCase();
+  console.log(z);
+  return z;
+}
+
+// var map;
+// var service;
+// var infowindow;
+// var locationURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + locationField + "&key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0"
 // $.ajax({
-//     url: queryURL,
-//     method: "GET"
+//   url: locationURL,
+//   method: "GET"
 // }).then(function (response) {
-//     productTag = response[0].tag_list; // this will be replaced with the DYNAMICALLY GENERATED user input
-//     console.log("Third Call", response);
-//     queryURL = queryURL + "&product_tags=" + productTag;
+//   console.log(response);
+
+// // https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+
 // });
 
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// }).then(function (response) {
+// function initialize() {
+//   var userLocation = new google.maps.LatLng(locationLatLng);
+//   // var userLocation = new google.maps.LatLng(-33.8665433,151.1956316);
+//   map = new google.maps.Map(document.getElementById('map'), {
+//     center: userLocation,
+//     zoom: 15
+//   });
 
-//     console.log("Fourth Call", response[0].product_api_url);
-// });
+//   var request = {
+//     location: userLocation,
+//     radius: '25',
+//     query: chosenBrand + 'cosmetics',
+//   };
 
-
-
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// }).then(function (response) {
-//     console.log(productType);
-//     console.log(productCategory);
-//     console.log(productBrand);
-//     console.log(productTag);
-//     console.log(priceMin);
-//     console.log(priceMax);
-//     console.log(ratingMin);
-//     console.log(ratingMax);
-//     console.log(queryURL);
-//     console.log(response);
-// });
-
-//dynamically display options on the front end
-
-//give the user an option to choose from the options
-
-//once a product is chosen show product information
-
-//give an option to find it in a store near them
-
-// Jessica's Code ================================================================================
-
-// $(".productCategoryMenuClass a").on("click", function pushToProductCategory() {
-//     var tempPC = $(this).text();
-//     tempProductCat = tempPC.toLowerCase();
-//     console.log(tempProductCat);
-//     return tempProductCat;
-// });
-
-// $(".brandMenuClass a").on("click", function pushToBrandMenuClass() {
-//     var tempBMC = $(this).text();
-//     tempBrandMenu = tempBMC.toLowerCase();
-//     console.log(tempBrandMenu);
-//     return tempBrandMenu;
-// });
-
-// $('example-getting-started').on('change', function (e, params) {
-//     alert(e.target.value); // OR
-//     alert(this.value); // OR
-//     alert(params.selected);
-// });
-
-// $("#submitMakeup").on("click", function () {
-//     tempMinPrice = document.getElementById("minPrice").value;
-//     tempMaxPrice = document.getElementById("maxPrice").value;
-//     tempMinRating = document.getElementById("minRating").value;
-//     tempMaxRating = document.getElementById("maxRating").value;
-
-//     console.log(tempMinPrice);
-//     console.log(tempMaxPrice);
-//     console.log(tempMinRating);
-//     console.log(tempMaxRating);
-//     console.log(queryURL);
-
-//     var queryURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_less_than=" + tempMaxPrice;
-
-//     $.ajax({
-//         url: queryURL,
-//         method: "GET"
-//     }).then(function (response) {
-//         console.log(response);
-//         var AppendDiv = $("<div>");
-//         var ApendImage = $("<image>");
-//         var AppendImage.attr("src", );
-
-
-
-
-//         $("#AppendDiv").append()
-
-
-//     });
-// });
-
-
-// $(document).ready(function () {
-//     $('#example-getting-started').multiselect();
-// });
-
-
-// function ARRtoString(arr) {
-//     var x = arr.toString();
-//     var y = x.replace(/ /g, "+");
-//     var z = y.toLowerCase();
-//     console.log(z);
-//     return z;
+//   service = new google.maps.places.PlacesService(map);
+//   service.textSearch(request, callback);
 // }
+
+// initialize();
+
+// function callback(results, status) {
+
+//   function createMarker(places) {
+//     var bounds = new google.maps.LatLngBounds();
+//     var placesList = document.getElementById('places');
+
+//     for (var i = 0, place; place = places[i]; i++) {
+//       var image = {
+//         url: place.icon,
+//         size: new google.maps.Size(71, 71),
+//         origin: new google.maps.Point(0, 0),
+//         anchor: new google.maps.Point(17, 34),
+//         scaledSize: new google.maps.Size(25, 25)
+//       };
+
+//       var marker = new google.maps.Marker({
+//         map: map,
+//         icon: image,
+//         title: place.name,
+//         position: place.geometry.location
+//       });
+
+//       var li = document.createElement('li');
+//       li.textContent = place.name;
+//       placesList.appendChild(li);
+
+//       bounds.extend(place.geometry.location);
+//     }
+//     map.fitBounds(bounds);
+//   }
+
+//   if (status == google.maps.places.PlacesServiceStatus.OK) {
+//     for (var i = 0; i < results.length; i++) {
+//       var place = results[i];
+//       createMarker(results[i]);
+//     }
+//   }
+// }
+
+// function createMarker(places) {
+//   var bounds = new google.maps.LatLngBounds();
+//   var placesList = document.getElementById('places');
+
+//   for (var i = 0, place; place = places[i]; i++) {
+//     var image = {
+//       url: place.icon,
+//       size: new google.maps.Size(71, 71),
+//       origin: new google.maps.Point(0, 0),
+//       anchor: new google.maps.Point(17, 34),
+//       scaledSize: new google.maps.Size(25, 25)
+//     };
+
+//     var marker = new google.maps.Marker({
+//       map: map,
+//       icon: image,
+//       title: place.name,
+//       position: place.geometry.location
+//     });
+
+//     var li = document.createElement('li');
+//     li.textContent = place.name;
+//     placesList.appendChild(li);
+
+//     bounds.extend(place.geometry.location);
+//   }
+//   map.fitBounds(bounds);
+// }
+
+
+//why is there CSS styling in the JS file?
+$(document).ready(function(){
+  $(".dropdown-toggle").css({ "color": "#212529",
+    "background-color": "#ffc107",
+    "border-color": "#ffc107"});
+    $(".multiselect-selected-text").text('Select Tags');
+});
