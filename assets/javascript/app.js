@@ -12,10 +12,10 @@ var tempPT = [];
 //taking Product Type Input and formatting to Query - JJ
 //Changing Button Text to What Is Selected - JJ
 $(".productTypeMenuClass a").on("click", function pushToProductType() {
-  var tempPT = $(this).text();
-  tempProductType = tempPT.toLowerCase();
+  var tempPMT = $(this).text();
+  tempProductType = tempPMT.toLowerCase();
   console.log(tempProductType);
-  document.getElementById("productTypeButton").textContent = tempPT;
+  document.getElementById("productTypeButton").textContent = tempPMT;
   return tempProductType;
 });
 
@@ -40,12 +40,25 @@ $(".brandMenuClass a").on("click", function pushToBrandMenuClass() {
   return tempBrandMenu;
 });
 
-//input collected from multi-select drop down menu - JJ
-$('example-getting-started').on('change', function (e, params) {
-  alert(e.target.value); // OR
-  alert(this.value); // OR
-  alert(params.selected);
-});
+$('#getting-started').multiselect({
+  onChange: function() {
+      console.log($('#getting-started').val());
+      var tags = $('#getting-started').val();
+      console.log(tags);
+      tempProductTag = ARRtoString(tags); 
+      console.log(tempProductTag);
+      return tempProductTag;
+    }
+  });
+
+  //for Product Tag when it works - JJ
+function ARRtoString(arr) {
+  var x = arr.toString();
+  var y = x.replace(/ /g, "+");
+  var z = y.toLowerCase();
+  //tempProductTag = z;
+  return z;
+}
 
 //AJAX Call
 //Taking Input - JJ
@@ -63,9 +76,10 @@ $("#submitMakeup").on("click", function () {
   console.log(tempMaxPrice);
   console.log(tempMinRating);
   console.log(tempMaxRating);
-  console.log(queryURL);
+  console.log(tempProductTag);
 
-  var queryURL = "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_less_than=" + tempMaxPrice;
+
+  var queryURL = "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&product_tags" + tempProductTag + "&price_less_than=" + tempMaxPrice;
 
   $.ajax({
     url: queryURL,
@@ -85,6 +99,10 @@ $("#submitMakeup").on("click", function () {
           resultsContainerSection.prepend(singleResultDiv);
           $("#MakeupDiv").append(resultsContainerSection);
         }
+  
+      if (response.length === 0) {
+      $("#MakeupDiv").prepend("Sorry, no results found!")
+    }
   });
 });
 
@@ -92,20 +110,6 @@ $("#submitMakeup").on("click", function () {
 $(document).ready(function () {
   $('#getting-started').multiselect();
 });
-
-$('#getting-started').multiselect({
-  onChange: function() {
-      console.log($('#getting-started').val());
-      var tags = $('#getting-started option:selected');
-      for (var i = 0; i > tags.length; i++){
-        if (tag.indexOf(tags) > -1) {
-          tempPT.push([$(tag).val()]);
-        }
-    ARRtoString(tempPT);
-    return tempPT;
-      }
-    }
-  });
 
 //when an image is clicked a new tab where you can buy the product appears - JJ
 $(document).on('click', '.clickHere', function () {
@@ -181,19 +185,47 @@ function callback(results, status) {
       var li = document.createElement('li');
       li.textContent = place.name;
       placesList.appendChild(li);
+      
+// initialize();
 
-      bounds.extend(place.geometry.location);
-    }
-    map.fitBounds(bounds);
-  }
+// function callback(results, status) {
 
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      var place = results[i];
-      createMarker(results[i]);
-    }
-  }
-}
+//   function createMarker(places) {
+//     var bounds = new google.maps.LatLngBounds();
+//     var placesList = document.getElementById('places');
+
+//     for (var i = 0, place; place = places[i]; i++) {
+//       var image = {
+//         url: place.icon,
+//         size: new google.maps.Size(71, 71),
+//         origin: new google.maps.Point(0, 0),
+//         anchor: new google.maps.Point(17, 34),
+//         scaledSize: new google.maps.Size(25, 25)
+//       };
+
+//       var marker = new google.maps.Marker({
+//         map: map,
+//         icon: image,
+//         title: place.name,
+//         position: place.geometry.location
+//       });
+
+//       var li = document.createElement('li');
+//       li.textContent = place.name;
+//       placesList.appendChild(li);
+
+//       bounds.extend(place.geometry.location);
+//     }
+//     map.fitBounds(bounds);
+//   }
+
+//   if (status == google.maps.places.PlacesServiceStatus.OK) {
+//     for (var i = 0; i < results.length; i++) {
+//       var place = results[i];
+//       createMarker(results[i]);
+//     }
+//   }
+// }
 
 //why is there CSS styling in the JS file?
 $(document).ready(function(){
