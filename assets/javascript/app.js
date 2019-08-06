@@ -12,10 +12,10 @@ var tempPT = [];
 //taking Product Type Input and formatting to Query - JJ
 //Changing Button Text to What Is Selected - JJ
 $(".productTypeMenuClass a").on("click", function pushToProductType() {
-  var tempPT = $(this).text();
-  tempProductType = tempPT.toLowerCase();
+  var tempPMT = $(this).text();
+  tempProductType = tempPMT.toLowerCase();
   console.log(tempProductType);
-  document.getElementById("productTypeButton").textContent = tempPT;
+  document.getElementById("productTypeButton").textContent = tempPMT;
   return tempProductType;
 });
 
@@ -40,12 +40,25 @@ $(".brandMenuClass a").on("click", function pushToBrandMenuClass() {
   return tempBrandMenu;
 });
 
-//input collected from multi-select drop down menu - JJ
-$('example-getting-started').on('change', function (e, params) {
-  alert(e.target.value); // OR
-  alert(this.value); // OR
-  alert(params.selected);
-});
+$('#getting-started').multiselect({
+  onChange: function() {
+      console.log($('#getting-started').val());
+      var tags = $('#getting-started').val();
+      console.log(tags);
+      tempProductTag = ARRtoString(tags); 
+      console.log(tempProductTag);
+      return tempProductTag;
+    }
+  });
+
+  //for Product Tag when it works - JJ
+function ARRtoString(arr) {
+  var x = arr.toString();
+  var y = x.replace(/ /g, "+");
+  var z = y.toLowerCase();
+  //tempProductTag = z;
+  return z;
+}
 
 //AJAX Call
 //Taking Input - JJ
@@ -56,13 +69,17 @@ $("#submitMakeup").on("click", function () {
   tempMinRating = document.getElementById("minRating").value;
   tempMaxRating = document.getElementById("maxRating").value;
 
+
+  // $("#map").html("<img src='./assets/ChicagoCosmetics.PNG' width='100%' height='100%'>");
+
   console.log(tempMinPrice);
   console.log(tempMaxPrice);
   console.log(tempMinRating);
   console.log(tempMaxRating);
-  console.log(queryURL);
+  console.log(tempProductTag);
 
-  var queryURL = "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_less_than=" + tempMaxPrice;
+
+  var queryURL = "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&product_tags" + tempProductTag + "&price_less_than=" + tempMaxPrice;
 
   $.ajax({
     url: queryURL,
@@ -82,13 +99,19 @@ $("#submitMakeup").on("click", function () {
           resultsContainerSection.prepend(singleResultDiv);
           $("#MakeupDiv").append(resultsContainerSection);
         }
-      });
+
+      if (response.length === 0) {
+      $("#MakeupDiv").prepend("Sorry, no results found!")
+    }
+  });
+});
 
 
 //function to allow the drop-down multiselect to work - JJ
 $(document).ready(function () {
   $('#getting-started').multiselect();
 });
+
 
 $('#getting-started').multiselect({
   onChange: function() {
@@ -126,10 +149,113 @@ function ARRtoString(arr) {
   return z;
 }
 
-//Changing the color and text of the button-AC
+var map;
+var service;
+var infowindow;
+var locationURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + locationField + "&key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0"
+$.ajax({
+  url: locationURL,
+  method: "GET"
+}).then(function (response) {
+  console.log(response);
+
+// https:maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+
+});
+
+function initialize() {
+  var userLocation = new google.maps.LatLng(locationLatLng);
+  // var userLocation = new google.maps.LatLng(-33.8665433,151.1956316);
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: userLocation,
+    zoom: 15
+  });
+
+  var request = {
+    location: userLocation,
+    radius: '25',
+    query: chosenBrand + 'cosmetics',
+  };
+
+  service = new google.maps.places.PlacesService(map);
+  service.textSearch(request, callback);
+}
+
+initialize();
+
+function callback(results, status) {
+
+  function createMarker(places) {
+    var bounds = new google.maps.LatLngBounds();
+    var placesList = document.getElementById('places');
+
+    for (var i = 0, place; place = places[i]; i++) {
+      var image = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      var marker = new google.maps.Marker({
+        map: map,
+        icon: image,
+        title: place.name,
+        position: place.geometry.location
+      });
+
+      var li = document.createElement('li');
+      li.textContent = place.name;
+      placesList.appendChild(li);
+      
+// initialize();
+
+// function callback(results, status) {
+
+//   function createMarker(places) {
+//     var bounds = new google.maps.LatLngBounds();
+//     var placesList = document.getElementById('places');
+
+//     for (var i = 0, place; place = places[i]; i++) {
+//       var image = {
+//         url: place.icon,
+//         size: new google.maps.Size(71, 71),
+//         origin: new google.maps.Point(0, 0),
+//         anchor: new google.maps.Point(17, 34),
+//         scaledSize: new google.maps.Size(25, 25)
+//       };
+
+//       var marker = new google.maps.Marker({
+//         map: map,
+//         icon: image,
+//         title: place.name,
+//         position: place.geometry.location
+//       });
+
+//       var li = document.createElement('li');
+//       li.textContent = place.name;
+//       placesList.appendChild(li);
+
+//       bounds.extend(place.geometry.location);
+//     }
+//     map.fitBounds(bounds);
+//   }
+
+//   if (status == google.maps.places.PlacesServiceStatus.OK) {
+//     for (var i = 0; i < results.length; i++) {
+//       var place = results[i];
+//       createMarker(results[i]);
+//     }
+//   }
+// }
+
+//why is there CSS styling in the JS file?
+
 $(document).ready(function(){
   $(".dropdown-toggle").css({ "color": "#212529",
     "background-color": "#ffc107",
     "border-color": "#ffc107"});
     $(".multiselect-selected-text").text('Select Tags');
 });
+
