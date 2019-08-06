@@ -99,16 +99,39 @@ $("#submitMakeup").on("click", function () {
           resultsContainerSection.prepend(singleResultDiv);
           $("#MakeupDiv").append(resultsContainerSection);
         }
-  
+
       if (response.length === 0) {
       $("#MakeupDiv").prepend("Sorry, no results found!")
     }
   });
 });
 
+
 //function to allow the drop-down multiselect to work - JJ
 $(document).ready(function () {
   $('#getting-started').multiselect();
+});
+
+
+$('#getting-started').multiselect({
+  onChange: function() {
+      console.log($('#getting-started').val());
+      var tags = $('#getting-started option:selected');
+      for (var i = 0; i > tags.length; i++){
+        if (tag.indexOf(tags) > -1) {
+          tempPT.push([$(tag).val()]);
+        }
+    ARRtoString(tempPT);
+    return tempPT;
+      }
+    }
+  });
+});
+
+//capturing the bootstrap multiselect style - JJ
+$(document).ready(function() {
+  $('#getting-started').multiselect();
+ 
 });
 
 //when an image is clicked a new tab where you can buy the product appears - JJ
@@ -228,6 +251,7 @@ function callback(results, status) {
 // }
 
 //why is there CSS styling in the JS file?
+
 $(document).ready(function(){
   $(".dropdown-toggle").css({ "color": "#212529",
     "background-color": "#ffc107",
