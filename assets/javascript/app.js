@@ -56,6 +56,9 @@ $("#submitMakeup").on("click", function () {
   tempMinRating = document.getElementById("minRating").value;
   tempMaxRating = document.getElementById("maxRating").value;
 
+
+  // $("#map").html("<img src='./assets/ChicagoCosmetics.PNG' width='100%' height='100%'>");
+
   console.log(tempMinPrice);
   console.log(tempMaxPrice);
   console.log(tempMinRating);
@@ -129,7 +132,7 @@ $.ajax({
 }).then(function (response) {
   console.log(response);
 
-// https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+// https:maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
 
 });
 
@@ -192,36 +195,6 @@ function callback(results, status) {
   }
 }
 
-// function createMarker(places) {
-//   var bounds = new google.maps.LatLngBounds();
-//   var placesList = document.getElementById('places');
-
-//   for (var i = 0, place; place = places[i]; i++) {
-//     var image = {
-//       url: place.icon,
-//       size: new google.maps.Size(71, 71),
-//       origin: new google.maps.Point(0, 0),
-//       anchor: new google.maps.Point(17, 34),
-//       scaledSize: new google.maps.Size(25, 25)
-//     };
-
-//     var marker = new google.maps.Marker({
-//       map: map,
-//       icon: image,
-//       title: place.name,
-//       position: place.geometry.location
-//     });
-
-//     var li = document.createElement('li');
-//     li.textContent = place.name;
-//     placesList.appendChild(li);
-
-//     bounds.extend(place.geometry.location);
-//   }
-//   map.fitBounds(bounds);
-// }
-
-
 //why is there CSS styling in the JS file?
 $(document).ready(function(){
   $(".dropdown-toggle").css({ "color": "#212529",
@@ -229,3 +202,4 @@ $(document).ready(function(){
     "border-color": "#ffc107"});
     $(".multiselect-selected-text").text('Select Tags');
 });
+
