@@ -1,4 +1,4 @@
-* { outline: 1px solid rgb(92, 7, 7)}
+/* * { outline: 1px solid rgb(92, 7, 7)} */
 
 html{
     box-sizing: border-box;
@@ -69,11 +69,15 @@ input, textarea {
 
 
 }
-    /* 
-    .result-container {
-        margin: 30px 30px 0 0;
     
-    } */
+.result-container {
+    /* margin: 30px 30px 0 0; */
+    width: 20%;
+}
+
+.result-container img {
+    width: 100%;
+}
 
 section{
     flex-wrap: wrap;
