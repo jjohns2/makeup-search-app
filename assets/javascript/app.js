@@ -86,12 +86,13 @@ $("#submitMakeup").on("click", function () {
           $("#MakeupDiv").append(resultsContainerSection);
         }
   });
-});
+// });
 
 //function to allow the drop-down multiselect to work - JJ
 $(document).ready(function () {
   $('#getting-started').multiselect();
 });
+
 
 $('#getting-started').multiselect({
   onChange: function() {
@@ -106,6 +107,13 @@ $('#getting-started').multiselect({
       }
     }
   });
+});
+
+//capturing the bootstrap multiselect style - JJ
+$(document).ready(function() {
+  $('#getting-started').multiselect();
+ 
+});
 
 //when an image is clicked a new tab where you can buy the product appears - JJ
 $(document).on('click', '.clickHere', function () {
@@ -122,80 +130,7 @@ function ARRtoString(arr) {
   return z;
 }
 
-var map;
-var service;
-var infowindow;
-var locationURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + locationField + "&key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0"
-$.ajax({
-  url: locationURL,
-  method: "GET"
-}).then(function (response) {
-  console.log(response);
-
-// https:maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
-
-});
-
-function initialize() {
-  var userLocation = new google.maps.LatLng(locationLatLng);
-  // var userLocation = new google.maps.LatLng(-33.8665433,151.1956316);
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: userLocation,
-    zoom: 15
-  });
-
-  var request = {
-    location: userLocation,
-    radius: '25',
-    query: chosenBrand + 'cosmetics',
-  };
-
-  service = new google.maps.places.PlacesService(map);
-  service.textSearch(request, callback);
-}
-
-initialize();
-
-function callback(results, status) {
-
-  function createMarker(places) {
-    var bounds = new google.maps.LatLngBounds();
-    var placesList = document.getElementById('places');
-
-    for (var i = 0, place; place = places[i]; i++) {
-      var image = {
-        url: place.icon,
-        size: new google.maps.Size(71, 71),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(25, 25)
-      };
-
-      var marker = new google.maps.Marker({
-        map: map,
-        icon: image,
-        title: place.name,
-        position: place.geometry.location
-      });
-
-      var li = document.createElement('li');
-      li.textContent = place.name;
-      placesList.appendChild(li);
-
-      bounds.extend(place.geometry.location);
-    }
-    map.fitBounds(bounds);
-  }
-
-  if (status == google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      var place = results[i];
-      createMarker(results[i]);
-    }
-  }
-}
-
-//why is there CSS styling in the JS file?
+//Changing the color and text of the button-AC
 $(document).ready(function(){
   $(".dropdown-toggle").css({ "color": "#212529",
     "background-color": "#ffc107",

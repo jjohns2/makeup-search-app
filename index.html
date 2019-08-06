@@ -34,13 +34,14 @@
     <div class="wrapper">
         <div class="row">
             <div class="col-sm-12">
+                <img id="logo" src="./assets/images/make-up-logo.png" alt="logo">
+                <h1>Makeup Sure</h1>
+                <h2 id="topic"> <a href="https://www.finder.com/buy-makeup-online" target="_blank"> Find the right makeup for your skin type </a> </h2> <br><br>
 
-                <h1 id="topic">Find the right make up for your skin type</h1><br><br>
                 <div class="flex-container">
                     <div class="dropdown">
-                        <button class="btn btn-warning dropdown-toggle" type="button"
-                            id="productTypeButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
+                        <button class="btn btn-warning dropdown-toggle" type="button" id="productTypeButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Product Type
                         </button>
                         <div class="dropdown-menu productTypeMenuClass" class="productType"
@@ -61,15 +62,14 @@
 
 
                     <div class="dropdown">
-                        <button class="btn btn-warning dropdown-toggle" type="button"
-                            id="productCategoryButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
+                        <button class="btn btn-warning dropdown-toggle" type="button" id="productCategoryButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Product Category
                         </button>
                         <div class="dropdown-menu productCategoryMenuClass" class="selectProductCategory"
                             aria-labelledby="dropdownMenu2">
 
-                      
+
                             <a class="dropdown-item" type="button">Cream</a>
                             <a class="dropdown-item" type="button">Powder</a>
                             <a class="dropdown-item" type="button">Pencil</a>
@@ -164,7 +164,8 @@
                     </div> <br>
 
 
-                    <select class="btn btn-default" id="example-getting-started" multiple="multiple">
+
+                    <select class="btn btn-default" id="getting-started" multiple="multiple">
                         <option class="dropdown-item" val="canadian">Canadian</option>
                         <option class="dropdown-item">CertClean</option>
                         <option class="dropdown-item">Chemical Free</option>
@@ -191,6 +192,7 @@
 
                     </select><br><br>
 
+
                     <form>
                         <span style="color:rgb(252, 222, 254)">Min Price</span> <input id="minPrice" type="number"
                             name="price" min="1" max="500">
@@ -200,8 +202,11 @@
                         <span style="color:rgb(252, 222, 254)">Min Rating</span> <input id="minRating" type="number"
                             name="price" min="1" max="5">
                         <span style="color:rgb(252, 222, 254)">Max Rating</span> <input id="maxRating" type="number"
-                            name="price" min="1" max="5">
+                            name="price" min="1" max="5"> <br><br>
 
+                        <span style="color:rgb(252, 222, 254)">Location</span> <input id="location" type="text"
+                            name="location" >
+    
                     </form> <br>
 
                     <div>
@@ -211,18 +216,50 @@
                     <div id="mapdiv">
                         <div id="map"></div>
                     </div> <br>
+
                 </div>
-            </div>  
+            </div>
         </div>
 
     </div>
-  
-     <div id="MakeupDiv"> </div>
 
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0&callback=initMap"
-        async defer></script> -->
+    <div id="MakeupDiv"> </div>
 
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0&libraries=places"></script>
+
+    <footer>
+        <div class="developers">
+
+            <span id="devText"> © Developers</span>
+            <a class="dev" href="https://github.com/VJNap"> <strong>Vincent</strong></a>
+            <a class="dev" href="https://github.com/anand92490"><strong>Anand</strong></a>
+
+        </div>
+
+    </footer>
+
+
+
+    <script type="text/javascript">
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 41.896359, lng: -87.618844 },
+                zoom: 9
+            });
+           
+            var marker = new google.maps.Marker({
+             position: { lat: 41.896359, lng: -87.618844 },
+            map: map,
+             title: 'Hello World!'
+         });
+        }
+    </script>
+
+
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0&callback=initMap"
+        async defer></script>
 
     <script src="assets/javascript/app.js"></script>
 
