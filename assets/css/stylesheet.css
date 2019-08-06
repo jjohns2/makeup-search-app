@@ -1,25 +1,84 @@
 
-body{
- background-image: url("../images/css-background.jpg");
+body, html{
+     background-image: url("../images/css-background.jpg");
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    
 }
+
+#logo{
+    display: block;
+    margin-left: auto;
+    margin-right:auto;
+    height:55px;
+    border-radius: 20%;
+    margin-top:20px;
+    box-shadow: 4px 4px 4px rgba(58, 8, 51, 0.911);  
+ 
+}
+
+
+h1{
+    width:100%;
+    text-align: center;
+    color: rgb(250, 220, 233);
+    font-family: 'Merienda', cursive;
+    font-size: 35px;
+    text-shadow: 4px 4px 4px rgba(230, 19, 201, 0.822);
+    padding-top:30px;
+   
+    
+}
+#le{
+    width:100%;
+    text-align: center;
+    color: rgba(161, 240, 172, 0.979);
+    font-family: 'Merienda', cursive;
+    font-size: 35px;
+    text-shadow: 4px 4px 4px rgba(230, 19, 201, 0.822);
+    padding-top:30px;
+}
+
 
 #topic{
     width:100%;
     text-align: center;
     color: rgb(250, 220, 233);
-    padding-top: 55px;
     font-family: 'Merienda', cursive;
-    font-size: 35px;
+    font-size: 20px;
     text-shadow: 4px 4px 4px rgba(15, 255, 231, 0.803);
+    
+}
+
+#topic a{
+    text-decoration: none;
+    width:100%;
+    text-align: center;
+    color: rgb(250, 220, 233);
+    padding-bottom: 20px;
+    font-family: 'Merienda', cursive;
+    font-size: 20px;
+    text-shadow: 4px 4px 4px rgba(15, 255, 231, 0.803);
+}
+
+#topic:hover{
+    cursor: url(myBall.cur),auto;
+    transform: scale(1.3);
+    color: rgb(11, 94, 94);
+    
 }
 
 .flex-container{
     text-align: center;
+    display: block;
+    margin-left: 0;
+    margin-right:0;
 }
 
-button{
+button:hover{
     box-shadow: 0 8px 16px 0 rgba(67, 87, 198, 0.902), 0 6px 20px 0 rgba(0,0,0,0.19);
-
+    transform: scale(1.2);
 }
 
 input, textarea {
@@ -30,17 +89,21 @@ input, textarea {
 
 #mapdiv{
     width: 100%;
+   
 }
 
 #map{
-    box-sizing: content-box;
+  
     width: 100%;
-    height: 50%;
-    border: 1px solid rgba(145, 8, 17, 0.872);
+    height: 45%;
+    border: 10px solid rgba(165, 20, 30, 0.342);
     box-shadow: 0 8px 16px 0 rgba(4, 55, 50, 0.646), 0 6px 20px 0 rgba(38, 67, 6, 0.797);
     margin-bottom: 20px;
     position: absolute;  
+
+  
 }
+
 
 
 .results-container {
@@ -48,17 +111,22 @@ input, textarea {
 	flex-wrap: wrap;
     margin-bottom: 30px;
     background-color: white;
-    margin-top: 313px;
+    margin-top: 348px;
 }
 
 .result-container {
     margin: 30px 30px 0 0; 
+    
 }
 
 .result {
-    width: 100%;   
+    width: 100%;  
+    cursor: pointer; 
 }
-  
+
+.result:hover{
+    transform: scale(1.6);
+}
 
 section{
     flex-wrap: wrap;
@@ -74,6 +142,7 @@ section{
 .dev{
     color: rgba(146, 193, 198, 0.571);
     margin: 10px;
+ 
 }
 
 #devText, a{
@@ -98,16 +167,28 @@ footer{
     width:100%;
 } 
 
+#logo{
+    position: absolute;
+    display: inline-block;
+    height:65px;
+    clear: both;
+    margin-left: 182px;
+    margin-top:39px;
+    box-shadow: 0 8px 16px 0 rgba(4, 55, 50, 0.646), 0 6px 20px 0 rgba(38, 67, 6, 0.797);
+   
+      
+  }
+  
 .flex-container{
     text-align: left;
     margin-left: 140px;
 }
-#topic{
+#topic a{
     text-align: center;
     color: rgb(250, 220, 233);
-    padding-top: 55px;
+    padding-top: 10px;
     font-family: 'Merienda', cursive;
-    font-size: 35px;
+    font-size: 27px;
     text-shadow: 4px 4px 4px rgba(15, 255, 231, 0.803);
 }
 
@@ -120,7 +201,7 @@ button{
 
 input, textarea {
     background-color : #f0b1e4;
-    box-shadow: 0 8px 16px 0 rgba(67, 87, 198, 0.902), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 8px 16px 0 rgba(50, 71, 185, 0.774), 0 6px 20px 0 rgba(0,0,0,0.19);
     margin: auto;
 
 }
@@ -131,14 +212,14 @@ form{
 
 #map {
    
-    width: 30%;
-    height: 40%;
-    border: 1px solid rgba(145, 8, 17, 0.872);
-    box-shadow: 0 8px 16px 0 rgba(22, 67, 62, 0.844), 0 6px 20px 0 rgba(38, 67, 6, 0.797);
+    width: 40%;
+    height: 60%;
+    border: 13px solid rgba(114, 24, 21, 0.397);
+    box-shadow: 0 8px 16px 0 rgba(25, 138, 230, 0.658), 0 6px 20px 0 rgba(38, 67, 6, 0.797);
     margin-bottom: 60px;
     position: absolute;
     right: 140px;
-    top: 165px;        
+    top: 190px;        
 } 
 
 .results-container {

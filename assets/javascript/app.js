@@ -83,6 +83,8 @@ $("#submitMakeup").on("click", function () {
           $("#MakeupDiv").append(resultsContainerSection);
         }
       });
+
+
 //function to allow the drop-down multiselect to work - JJ
 $(document).ready(function () {
   $('#getting-started').multiselect();
@@ -103,6 +105,11 @@ $('#getting-started').multiselect({
   });
 });
 
+//capturing the bootstrap multiselect style - JJ
+$(document).ready(function() {
+  $('#getting-started').multiselect();
+ 
+});
 
 //when an image is clicked a new tab where you can buy the product appears - JJ
 $(document).on('click', '.clickHere', function () {
@@ -119,6 +126,7 @@ function ARRtoString(arr) {
   return z;
 }
 
+//Changing the color and text of the button-AC
 $(document).ready(function(){
   $(".dropdown-toggle").css({ "color": "#212529",
     "background-color": "#ffc107",
