@@ -12,10 +12,10 @@ var tempPT = [];
 //taking Product Type Input and formatting to Query - JJ
 //Changing Button Text to What Is Selected - JJ
 $(".productTypeMenuClass a").on("click", function pushToProductType() {
-  var tempPT = $(this).text();
-  tempProductType = tempPT.toLowerCase();
+  var tempPMT = $(this).text();
+  tempProductType = tempPMT.toLowerCase();
   console.log(tempProductType);
-  document.getElementById("productTypeButton").textContent = tempPT;
+  document.getElementById("productTypeButton").textContent = tempPMT;
   return tempProductType;
 });
 
@@ -40,12 +40,25 @@ $(".brandMenuClass a").on("click", function pushToBrandMenuClass() {
   return tempBrandMenu;
 });
 
-//input collected from multi-select drop down menu - JJ
-$('example-getting-started').on('change', function (e, params) {
-  alert(e.target.value); // OR
-  alert(this.value); // OR
-  alert(params.selected);
-});
+$('#getting-started').multiselect({
+  onChange: function() {
+      console.log($('#getting-started').val());
+      var tags = $('#getting-started').val();
+      console.log(tags);
+      tempProductTag = ARRtoString(tags); 
+      console.log(tempProductTag);
+      return tempProductTag;
+    }
+  });
+
+  //for Product Tag when it works - JJ
+function ARRtoString(arr) {
+  var x = arr.toString();
+  var y = x.replace(/ /g, "+");
+  var z = y.toLowerCase();
+  //tempProductTag = z;
+  return z;
+}
 
 //AJAX Call
 //Taking Input - JJ
@@ -63,9 +76,10 @@ $("#submitMakeup").on("click", function () {
   console.log(tempMaxPrice);
   console.log(tempMinRating);
   console.log(tempMaxRating);
-  console.log(queryURL);
+  console.log(tempProductTag);
 
-  var queryURL = "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&price_less_than=" + tempMaxPrice;
+
+  var queryURL = "https://makeup-api.herokuapp.com/api/v1/products.json?product_type=" + tempProductType + "&product_category=" + tempProductCat + "&brand=" + tempBrandMenu + "&product_tags" + tempProductTag + "&price_less_than=" + tempMaxPrice;
 
   $.ajax({
     url: queryURL,
