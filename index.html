@@ -34,7 +34,7 @@
     <div class="wrapper">
         <div class="row">
             <div class="col-sm-12">
-                <img id="logo" src="./assets/images/make-up-logo.png" alt="logo">
+                <img id="logo" src="./assets/images/logo.png" alt="logo">
                 <h1>Makeup Sure</h1>
                 <h2 id="topic"> <a href="https://www.finder.com/buy-makeup-online" target="_blank"> Find the right makeup for your skin type </a> </h2> <br><br>
 
@@ -204,9 +204,8 @@
                         <span style="color:rgb(252, 222, 254)">Max Rating</span> <input id="maxRating" type="number"
                             name="price" min="1" max="5"> <br><br>
 
-                        <span style="color:rgb(252, 222, 254)">Location</span> <input id="location" type="text"
-                            name="location" >
-    
+                         <span style="color:rgb(252, 222, 254)">Search stores nearby:</span><br> <input class="mapInput" style="margin-top: 20px"  id="search" type="text" placeholder="Search..."/>
+            
                     </form> <br>
 
                     <div>
@@ -216,7 +215,6 @@
                     <div id="mapdiv">
                         <div id="map"></div>
                     </div> <br>
-
                 </div>
             </div>
         </div>
@@ -240,23 +238,63 @@
 
 
     <script type="text/javascript">
-        var map;
-        function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: 41.896359, lng: -87.618844 },
-                zoom: 9
-            });
-           
-            var marker = new google.maps.Marker({
-             position: { lat: 41.896359, lng: -87.618844 },
-            map: map,
-             title: 'Hello World!'
-         });
-        }
+       // google maps api code 
+
+var map;
+
+function createMap() {
+  var options = {
+    center: { lat: 41.896359, lng: -87.618844 },
+    zoom: 10
+  };
+
+  map = new google.maps.Map(document.getElementById('map'), options);
+
+  var input = document.getElementById('search');
+  var searchBox = new google.maps.places.SearchBox(input);
+
+  map.addListener('bounds_changed', function () {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  var markers = [];
+
+  searchBox.addListener('places_changed', function () {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0)
+      return;
+
+    markers.forEach(function (m) { m.setMap(null); });
+    markers = [];
+
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function (p) {
+      if (!p.geometry)
+        return;
+
+      markers.push(new google.maps.Marker({
+        map: map,
+        title: p.name,
+        position: p.geometry.location
+      }));
+
+      if (p.geometry.viewport)
+        bounds.union(p.geometry.viewport);
+      else
+        bounds.extend(p.geometry.location);
+    });
+
+
+    map.fitBounds(bounds);
+  });
+}
+
   </script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0&callback=initMap"
-        async defer></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0&callback=createMap&libraries=places"
+  async defer></script>
 
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBkx6csSYgVsdKk50-0CHLp3v2RE8d9pQ0&callback=initMap"
         async defer></script> -->
