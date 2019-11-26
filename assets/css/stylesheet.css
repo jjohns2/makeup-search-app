@@ -3,7 +3,7 @@
 
 
 body, html{
-    background-image: url("../images/css-background.jpg");
+    background-image: url("https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?cs=srgb&dl=pink-clouds-1831234.jpg&fm=jpg");
     width: 100%;
     padding: 0;
     margin: 0;
@@ -23,7 +23,7 @@ body, html{
 h1{
     width:100%;
     text-align: center;
-    color: rgb(250, 220, 233);
+    color: rgb(82, 12, 42);
     font-family: 'Merienda', cursive;
     font-size: 35px;
     text-shadow: 4px 4px 4px rgba(230, 19, 201, 0.822);
@@ -34,10 +34,10 @@ h1{
 #le{
     width:100%;
     text-align: center;
-    color: rgba(161, 240, 172, 0.979);
+    color: rgba(17, 50, 21, 0.979);
     font-family: 'Merienda', cursive;
     font-size: 35px;
-    text-shadow: 4px 4px 4px rgba(230, 19, 201, 0.822);
+    text-shadow: 4px 4px 4px rgba(230, 19, 202, 0.955);
     padding-top:30px;
 }
 
@@ -45,10 +45,10 @@ h1{
 #topic{
     width:100%;
     text-align: center;
-    color: rgb(250, 220, 233);
+    color: rgb(23, 3, 12);
     font-family: 'Merienda', cursive;
     font-size: 20px;
-    text-shadow: 4px 4px 4px rgba(15, 255, 231, 0.803);
+    text-shadow: 4px 4px 4px rgba(21, 86, 79, 0.803);
     
 }
 
@@ -56,17 +56,17 @@ h1{
     text-decoration: none;
     width:100%;
     text-align: center;
-    color: rgb(250, 220, 233);
+    color: rgb(31, 5, 16);
     padding-bottom: 20px;
     font-family: 'Merienda', cursive;
     font-size: 20px;
-    text-shadow: 4px 4px 4px rgba(15, 255, 231, 0.803);
+    text-shadow: 4px 4px 4px rgb(4, 16, 15);
 }
 
 #topic:hover{
     cursor: url(myBall.cur),auto;
     transform: scale(0.9);
-    color: rgb(11, 94, 94);
+    color: rgb(9, 41, 41);
     
 }
 
@@ -106,6 +106,7 @@ input, textarea {
     box-shadow: 0 8px 16px 0 rgba(4, 55, 50, 0.646), 0 6px 20px 0 rgba(38, 67, 6, 0.797);
     margin-bottom: 20px;
     position: absolute;  
+    right:0
 
   
 }
@@ -192,11 +193,11 @@ footer{
 }
 #topic a{
     text-align: center;
-    color: rgb(250, 220, 233);
+    color: rgb(67, 11, 35);
     padding-top: 10px;
     font-family: 'Merienda', cursive;
-    font-size: 27px;
-    text-shadow: 4px 4px 4px rgba(15, 255, 231, 0.803);
+    font-size: 24px;
+    text-shadow: 4px 4px 4px rgba(2, 31, 28, 0.803);
 }
 
 button{
